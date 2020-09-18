@@ -1,42 +1,141 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Panel.gd" type="Script" id=1]
+[ext_resource path="res://Button.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Sprite.gd" type="Script" id=3]
+[ext_resource path="res://Area2D.gd" type="Script" id=4]
 
-[node name="Scene1" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Panel
+
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$TestText.text = str(get_tree().get_current_scene().get_name())
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	
+
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 98.4561, 98.7871 )
+
+[node name="Level 1" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
-margin_top = 1.0
-margin_right = 93.0
-margin_bottom = 78.0
-script = ExtResource( 1 )
+margin_left = 404.0
+margin_top = 56.0
+margin_right = 595.0
+margin_bottom = 154.0
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TestText" type="Label" parent="Panel"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 191.0
+margin_bottom = 98.0
+align = 1
+valign = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="Container" parent="."]
-margin_left = 140.894
-margin_top = 93.9557
-margin_right = 540.894
-margin_bottom = 493.955
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Board" type="Area2D" parent="."]
+position = Vector2( 500, 300 )
+script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Container"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, -31.7408 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+
+[node name="Sprite3" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -95.7409 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+column = 2
+
+[node name="Sprite4" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -31.7409 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+column = 2
+
+[node name="Sprite5" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, 32.2591 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+column = 2
+
+[node name="Sprite6" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, -95.7408 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+column = 1
+
+[node name="Sprite7" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, -31.7408 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+column = 1
+
+[node name="Sprite8" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, 32.2591 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+column = 1
+
+[node name="Sprite9" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, 32.2591 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+
+[node name="Sprite10" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, -95.7408 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="Container"]
-position = Vector2( 64, 0 )
-texture = ExtResource( 2 )
-centered = false
+[node name="Button" type="Button" parent="."]
+margin_left = 451.0
+margin_top = 424.793
+margin_right = 551.0
+margin_bottom = 459.793
+text = "SUBMIT"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+[connection signal="pressed" from="Button" to="Board" method="_submit"]
