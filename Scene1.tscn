@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Panel.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprite.gd" type="Script" id=3]
+
+[node name="Scene1" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 1.0
+margin_right = 93.0
+margin_bottom = 78.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestText" type="Label" parent="Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Container" parent="."]
+margin_left = 140.894
+margin_top = 93.9557
+margin_right = 540.894
+margin_bottom = 493.955
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Container"]
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Container"]
+position = Vector2( 64, 0 )
+texture = ExtResource( 2 )
+centered = false
