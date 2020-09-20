@@ -103,8 +103,8 @@ func _get_pivot():
 	return pivot
 	
 func _update_in_out_vars(var p):
-	var incoming = self.outgoing[p[1]]
-	self.incoming[p[0]-1] = incoming
+	var t_incoming = self.outgoing[p[1]]
+	self.incoming[p[0]-1] = t_incoming
 	
 func _is_pivot_one(var p):
 	return self.dual_tab[p[0]][p[1]] == 1
