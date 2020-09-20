@@ -2,6 +2,7 @@ extends Sprite
 export var is_lifted : bool
 export var row: int
 export var column : int  
+export var pipe_num : int
 
 func _input(event):
 	

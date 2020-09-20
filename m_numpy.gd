@@ -18,6 +18,27 @@ static func m_negate(arr):
 	return res
 	
 static func m_min(arr):
-	var c_arr = [] + arr
+	var c_arr = arr.duplicate(true)
 	c_arr.sort()
 	return c_arr[0]
+	
+static func m_divide_row_by(var arr, var value):
+	var res = arr.duplicate(true)
+	
+	for i in res.size():
+		var div = float(res[i]) / float(value)
+		res[i] = div
+		
+	return res
+	
+static func m_multiply_row(var arr, var val):
+	var res = arr.duplicate(true)
+	for i in res.size():
+		res[i] = res[i] * val 
+	return res
+	
+static func m_add_rows(var row1, var row2):
+	var res = []
+	for i in row1.size():
+		res.append(float(row1[i]) + float(row2[i]))
+	return res

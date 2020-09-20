@@ -1,6 +1,8 @@
 # TODO: 
-# representation of incoming and outgoing variables
 # loop until non pivot can be found
+
+var outgoing = [1,2,3,4,5,6] # row vars
+var incoming = [3,4,5,6] # base/col vars
 
 var np = preload("res://m_numpy.gd") 
 
@@ -14,14 +16,14 @@ var dual_costs 			= []
 var dual_constraints 	= []
 var dual_b_hat		 	= []
 var dual_A				= []
-var dual_tab			= []
+var dual_tab : 			= []
 #var base_vars			= []
 
 # for testing assume that:
 # primal_costs = [1,1,1,1]
 # primal_constraints =  [[1,1,0,1], [1,0,1,1]]
 
-func _init():		
+func _init():	
 	self._init_primal_A()
 	self._init_primal_b_hat()
 	
@@ -30,10 +32,11 @@ func _init():
 	self._init_dual_costs()
 	self._init_dual_tab()
 	
-	print(self._get_pivot())
+	print("Dual init: ", self.dual_tab)
 	
-	print("Primal A: ", self.primal_A)
-	print("Dual tableau", self.dual_tab)
+	self._transform_dual_A(self._get_pivot())
+	
+	print("Dual: ", self.dual_tab)
 	
 func _init_primal_A():
 	for i in self.primal_constraints.size():
@@ -93,9 +96,28 @@ func _get_pivot():
 			if self.dual_tab[i][pivot[1]] <= 0:
 				temp_arr.append(INF)
 			else: 
-				temp_arr.append(self.dual_b_hat[i] / self.dual_tab[i][pivot[1]])
+				temp_arr.append(float(self.dual_b_hat[i]) / float(self.dual_tab[i][pivot[1]]))
 				
 	pivot[0] = temp_arr.find(np.m_min(temp_arr)) + 1
 	
 	return pivot
 	
+func _update_in_out_vars(var p):
+	var incoming = self.outgoing[p[1]]
+	self.incoming[p[0]-1] = incoming
+	
+func _is_pivot_one(var p):
+	return self.dual_tab[p[0]][p[1]] == 1
+	
+func _transform_dual_A(var p):
+	# divide pivot row by pivot value p_val
+	var p_val = self.dual_tab[p[0]][p[1]]
+	self.dual_tab[p[0]] = np.m_divide_row_by(self.dual_tab[p[0]], p_val)
+	
+	# make a pivot column a 0-column
+	for i in self.dual_tab.size():
+		if i != p[0] && self.dual_tab[i][p[1]] != 0:
+			var row_to_add = np.m_multiply_row(self.dual_tab[p[0]], -self.dual_tab[i][p[1]])
+			self.dual_tab[i] = np.m_add_rows(row_to_add, self.dual_tab[i])
+			
+	self._update_in_out_vars(p)
