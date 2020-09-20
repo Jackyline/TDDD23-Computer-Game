@@ -5,8 +5,8 @@ var sprites = []
 
 
 func _ready():
-	var thing = load("res://simplex.gd").new(100) 
-	print(thing.get_val() , " is a value from simplex")
+	var thing = load("res://simplex.gd").new() 
+	#print(thing.get_val() , " is a value from simplex")
 	
 	for sprite in self.get_children():
 			if sprite is Sprite:
