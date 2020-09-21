@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Plumber For Engineers"
-run/main_scene="res://Scene1.tscn"
+run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+MusicController="*res://MusicController.tscn"
 
 [rendering]
 
