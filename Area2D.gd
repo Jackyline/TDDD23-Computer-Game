@@ -5,7 +5,7 @@ var sprites = []
 
 
 func _ready():
-	var thing = load("res://simplex.gd").new() 
+	var thing = load("res://simplex.gd").new([1,1,1,1], [[1,1,0,0], [0,0,1,1]]) 
 	#print(thing.get_val() , " is a value from simplex")
 	
 	for sprite in self.get_children():

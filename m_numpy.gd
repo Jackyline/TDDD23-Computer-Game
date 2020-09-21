@@ -42,3 +42,10 @@ static func m_add_rows(var row1, var row2):
 	for i in row1.size():
 		res.append(float(row1[i]) + float(row2[i]))
 	return res
+	
+static func m_splice(var arr, var from, var to):
+	var res = []
+	for i in arr.size():
+		if i >= from && i <= to-1:
+			res.append(arr[i])
+	return res
