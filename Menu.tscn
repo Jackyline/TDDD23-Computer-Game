@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Start.gd" type="Script" id=2]
+[ext_resource path="res://Exit.gd" type="Script" id=3]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1023.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = -0.025
+anchor_right = -0.025
+margin_left = 376.0
+margin_top = 101.0
+margin_right = 676.0
+margin_bottom = 167.0
+custom_fonts/font = ExtResource( 1 )
+text = "Plumber For Engineers"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="Control"]
+margin_left = 434.838
+margin_top = 195.297
+margin_right = 556.838
+margin_bottom = 241.297
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Control"]
+margin_left = 435.027
+margin_top = 261.297
+margin_right = 556.027
+margin_bottom = 309.297
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="ready" from="." to="Control/Start" method="_on_MainMenu_ready"]
+[connection signal="pressed" from="Control/Start" to="Control/Start" method="_on_Start_pressed"]
+[connection signal="pressed" from="Control/Exit" to="Control/Exit" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
