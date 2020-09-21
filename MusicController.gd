@@ -1,7 +1,10 @@
 extends Control
 
 # Load the music player node
-onready var _player = $AudioStreamPlayer
+onready var _player = AudioStreamPlayer.new()
+
+func _ready():
+	add_child(_player)
 
 # Calling this function will load the given track, and play it
 func play():
