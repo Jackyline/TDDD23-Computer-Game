@@ -3,6 +3,8 @@ export var is_lifted : bool
 export var row: int
 export var column : int  
 export var pipe_num : int
+export var cost : int
+export var order : int
 
 func _input(event):
 	

@@ -17,11 +17,6 @@ var dual_constraints 	= []
 var dual_b_hat		 	= []
 var dual_A				= []
 var dual_tab : 			= []
-#var base_vars			= []
-
-# for testing assume that:
-# primal_costs = [1,1,1,1]
-# primal_constraints =  [[1,1,0,1], [1,0,1,1]]
 
 func _init(var p_costs, var p_constraints):	
 	self.primal_costs = p_costs
@@ -114,7 +109,7 @@ func _transform_dual_tab(var p):
 			var row_to_add = np.m_multiply_row(self.dual_tab[p[0]], -self.dual_tab[i][p[1]])
 			self.dual_tab[i] = np.m_add_rows(row_to_add, self.dual_tab[i])
 			
-	self._update_in_out_vars(p)
+	#self._update_in_out_vars(p)
 
 func _solve():
 	self._init_primal_A()

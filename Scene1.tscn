@@ -61,71 +61,94 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
 shape = SubResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, -31.7408 )
+[node name="x0" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, -95.7408 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
-row = 1
+cost = 1
 
-[node name="Sprite3" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, -95.7409 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-column = 2
-
-[node name="Sprite4" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, -31.7409 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 1
-column = 2
-
-[node name="Sprite5" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, 32.2591 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 2
-column = 2
-
-[node name="Sprite6" type="Sprite" parent="Board"]
+[node name="x1" type="Sprite" parent="Board"]
 position = Vector2( -32.4332, -95.7408 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
 column = 1
+cost = 1
+order = 1
 
-[node name="Sprite7" type="Sprite" parent="Board"]
+[node name="x2" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -95.7409 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+column = 2
+cost = 1
+order = 2
+
+[node name="x3" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, -31.7408 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+pipe_num = 1
+cost = 1
+order = 3
+
+[node name="x4" type="Sprite" parent="Board"]
 position = Vector2( -32.4332, -31.7408 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
 row = 1
 column = 1
+pipe_num = 1
+cost = 1
+order = 4
 
-[node name="Sprite8" type="Sprite" parent="Board"]
+[node name="x5" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -31.7409 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+column = 2
+pipe_num = 1
+cost = 1
+order = 5
+
+[node name="x6" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, 32.2591 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+pipe_num = 2
+cost = 1
+order = 6
+
+[node name="x7" type="Sprite" parent="Board"]
 position = Vector2( -32.4332, 32.2591 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
 row = 2
 column = 1
+pipe_num = 2
+cost = 1
+order = 7
 
-[node name="Sprite9" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, 32.2591 )
+[node name="x8" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, 32.2591 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
 row = 2
-
-[node name="Sprite10" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, -95.7408 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
+column = 2
+pipe_num = 2
+cost = 1
+order = 8
 
 [node name="Button" type="Button" parent="."]
 margin_left = 451.0
