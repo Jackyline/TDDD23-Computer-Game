@@ -8,7 +8,7 @@ func _ready():
 
 # Calling this function will load the given track, and play it
 func play():
-	var track = load("res://menu-game.ogg")
+	var track = load("res://menu-game-v2.ogg")
 	_player.stream = track
 	_player.play()
 
