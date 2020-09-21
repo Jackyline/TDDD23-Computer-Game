@@ -22,4 +22,4 @@ func _on_Start_pressed():
 
 
 func _on_MainMenu_ready():
-	MusicController.play()
+	pass #MusicController.play()
