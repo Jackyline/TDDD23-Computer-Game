@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Start.gd" type="Script" id=2]
 [ext_resource path="res://Exit.gd" type="Script" id=3]
+[ext_resource path="res://LevelSelector.gd" type="Script" id=4]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="Control" type="Control" parent="."]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1023.0
-margin_bottom = 597.0
+margin_left = -0.122437
+margin_top = -1.245
+margin_right = 1021.88
+margin_bottom = 594.755
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,10 +32,10 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="Control"]
-margin_left = 434.838
-margin_top = 195.297
-margin_right = 556.838
-margin_bottom = 241.297
+margin_left = 406.02
+margin_top = 194.633
+margin_right = 587.02
+margin_bottom = 240.633
 custom_fonts/font = ExtResource( 1 )
 text = "Start"
 script = ExtResource( 2 )
@@ -43,13 +44,25 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="Control"]
-margin_left = 435.027
-margin_top = 261.297
-margin_right = 556.027
-margin_bottom = 309.297
+margin_left = 406.0
+margin_top = 347.919
+margin_right = 584.0
+margin_bottom = 395.919
 custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelSelect" type="Button" parent="Control"]
+margin_left = 406.0
+margin_top = 272.837
+margin_right = 584.0
+margin_bottom = 318.837
+custom_fonts/font = ExtResource( 1 )
+text = "Level Select"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,3 +70,4 @@ __meta__ = {
 [connection signal="pressed" from="Control/Start" to="Control/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Exit" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Control/LevelSelect" to="Control/LevelSelect" method="_on_LevelSelect_pressed"]

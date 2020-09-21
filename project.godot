@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-MusicController="*res://MusicController.tscn"
+MusicController="*res://MusicController.gd"
 
 [rendering]
 
