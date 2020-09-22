@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://textures/icon.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/mute.png" type="Texture" id=8]
+[ext_resource path="res://textures/pipe1.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -68,15 +69,16 @@ shape = SubResource( 3 )
 
 [node name="x0" type="Sprite" parent="Board"]
 position = Vector2( -96.4332, -95.7408 )
-scale = Vector2( 0.0653061, 0.0763722 )
-texture = ExtResource( 8 )
+scale = Vector2( 0.968413, 0.961812 )
+texture = ExtResource( 9 )
 centered = false
 script = ExtResource( 3 )
+pipes = [ 0 ]
 cost = 1
 
 [node name="Sprite" type="Sprite" parent="Board/x0"]
-position = Vector2( 474, 403.001 )
-scale = Vector2( 15.8125, 13.5938 )
+position = Vector2( 30.9562, 30.7295 )
+scale = Vector2( 1.03262, 1.03971 )
 texture = ExtResource( 2 )
 
 [node name="x1" type="Sprite" parent="Board"]
@@ -86,6 +88,7 @@ texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
 column = 1
+pipes = [ 0, 1 ]
 cost = 1
 order = 1
 
@@ -101,6 +104,7 @@ texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
 column = 2
+pipes = [ 0 ]
 cost = 1
 order = 2
 
@@ -116,6 +120,7 @@ texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
 row = 1
+pipes = [ 0 ]
 cost = 1
 order = 3
 
@@ -132,6 +137,7 @@ centered = false
 script = ExtResource( 3 )
 row = 1
 column = 1
+pipes = [ 0 ]
 cost = 1
 order = 4
 
@@ -148,6 +154,7 @@ centered = false
 script = ExtResource( 3 )
 row = 1
 column = 2
+pipes = [ 0 ]
 cost = 1
 order = 5
 
@@ -163,6 +170,7 @@ texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
 row = 2
+pipes = [ 0 ]
 cost = 1
 order = 6
 
@@ -179,6 +187,7 @@ centered = false
 script = ExtResource( 3 )
 row = 2
 column = 1
+pipes = [ 0 ]
 cost = 1
 order = 7
 
