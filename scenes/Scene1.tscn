@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://textures/icon.png" type="Texture" id=2]
@@ -7,10 +7,7 @@
 [ext_resource path="res://textures/sound.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
-
-
-
-
+[ext_resource path="res://textures/mute.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -69,71 +66,142 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
 shape = SubResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, -31.7408 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 1
-
-[node name="Sprite3" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, -95.7409 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-column = 2
-
-[node name="Sprite4" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, -31.7409 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 1
-column = 2
-
-[node name="Sprite5" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, 32.2591 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 2
-column = 2
-
-[node name="Sprite6" type="Sprite" parent="Board"]
-position = Vector2( -32.4332, -95.7408 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-column = 1
-
-[node name="Sprite7" type="Sprite" parent="Board"]
-position = Vector2( -32.4332, -31.7408 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 1
-column = 1
-
-[node name="Sprite8" type="Sprite" parent="Board"]
-position = Vector2( -32.4332, 32.2591 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 2
-column = 1
-
-[node name="Sprite9" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, 32.2591 )
-texture = ExtResource( 2 )
-centered = false
-script = ExtResource( 3 )
-row = 2
-
-[node name="Sprite10" type="Sprite" parent="Board"]
+[node name="x0" type="Sprite" parent="Board"]
 position = Vector2( -96.4332, -95.7408 )
-texture = ExtResource( 2 )
+scale = Vector2( 0.0653061, 0.0763722 )
+texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
+cost = 1
+
+[node name="Sprite" type="Sprite" parent="Board/x0"]
+position = Vector2( 474, 403.001 )
+scale = Vector2( 15.8125, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x1" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, -95.7408 )
+scale = Vector2( 0.0653061, 0.0763722 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+column = 1
+cost = 1
+order = 1
+
+[node name="Sprite" type="Sprite" parent="Board/x1"]
+position = Vector2( 474, 403 )
+scale = Vector2( 15.8125, 13.5937 )
+texture = ExtResource( 2 )
+
+[node name="x2" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -95.7409 )
+scale = Vector2( 0.0653061, 0.0763723 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+column = 2
+cost = 1
+order = 2
+
+[node name="Sprite" type="Sprite" parent="Board/x2"]
+position = Vector2( 469.661, 403.001 )
+scale = Vector2( 15.6769, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x3" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, -31.7408 )
+scale = Vector2( 0.0631737, 0.0763722 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+cost = 1
+order = 3
+
+[node name="Sprite" type="Sprite" parent="Board/x3"]
+position = Vector2( 490.54, 403 )
+scale = Vector2( 16.3294, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x4" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, -31.7408 )
+scale = Vector2( 0.0631737, 0.0763722 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+column = 1
+cost = 1
+order = 4
+
+[node name="Sprite" type="Sprite" parent="Board/x4"]
+position = Vector2( 490.54, 403 )
+scale = Vector2( 16.3294, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x5" type="Sprite" parent="Board"]
+position = Vector2( 31.5668, -31.7409 )
+scale = Vector2( 0.0647278, 0.0763723 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 1
+column = 2
+cost = 1
+order = 5
+
+[node name="Sprite" type="Sprite" parent="Board/x5"]
+position = Vector2( 474, 403 )
+scale = Vector2( 15.8125, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x6" type="Sprite" parent="Board"]
+position = Vector2( -96.4332, 32.2591 )
+scale = Vector2( 0.0653061, 0.0763723 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+cost = 1
+order = 6
+
+[node name="Sprite" type="Sprite" parent="Board/x6"]
+position = Vector2( 474, 403 )
+scale = Vector2( 15.8125, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x7" type="Sprite" parent="Board"]
+position = Vector2( -32.4332, 32.2591 )
+scale = Vector2( 0.0631737, 0.0763723 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+column = 1
+cost = 1
+order = 7
+
+[node name="Sprite" type="Sprite" parent="Board/x7"]
+position = Vector2( 490.54, 403 )
+scale = Vector2( 16.3294, 13.5938 )
+texture = ExtResource( 2 )
+
+[node name="x8" type="Sprite" parent="Board"]
+position = Vector2( 29.4955, 29.8152 )
+scale = Vector2( 0.0668414, 0.0792886 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 3 )
+row = 2
+column = 2
+cost = 1
+order = 8
+
+[node name="Sprite" type="Sprite" parent="Board/x8"]
+position = Vector2( 489.862, 419 )
+scale = Vector2( 15.3168, 13.0938 )
+texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 451.0

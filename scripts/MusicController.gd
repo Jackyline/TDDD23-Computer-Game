@@ -5,6 +5,7 @@ onready var _player = AudioStreamPlayer.new()
 
 func _ready():
 	add_child(_player)
+	_player.set_volume_db(-25)
 	play()
 
 # Calling this function will load the given track, and play it
