@@ -4,8 +4,8 @@ extends Button
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var sound = preload("res://sound.png")
-var mute = preload("res://mute.png")
+var sound = preload("res://textures/sound.png")
+var mute = preload("res://textures/mute.png")
 var music_position = 0
 
 onready var _player = get_tree().get_root().get_node("/root/MusicController").get_child(0)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Start.gd" type="Script" id=2]
-[ext_resource path="res://Exit.gd" type="Script" id=3]
-[ext_resource path="res://LevelSelector.gd" type="Script" id=4]
+[ext_resource path="res://scripts/LevelSelector.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Start.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Exit.gd" type="Script" id=4]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -38,7 +38,7 @@ margin_right = 587.02
 margin_bottom = 240.633
 custom_fonts/font = ExtResource( 1 )
 text = "Start"
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +50,7 @@ margin_right = 584.0
 margin_bottom = 395.919
 custom_fonts/font = ExtResource( 1 )
 text = "Exit"
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,12 +62,12 @@ margin_right = 584.0
 margin_bottom = 318.837
 custom_fonts/font = ExtResource( 1 )
 text = "Level Select"
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="ready" from="." to="Control/Start" method="_on_MainMenu_ready"]
 [connection signal="pressed" from="Control/Start" to="Control/Start" method="_on_Start_pressed"]
-[connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Exit" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/LevelSelect" to="Control/LevelSelect" method="_on_LevelSelect_pressed"]

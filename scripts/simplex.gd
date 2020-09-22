@@ -4,7 +4,7 @@
 var outgoing = [1,2,3,4,5,6] # row vars
 var incoming = [3,4,5,6] # base/col vars
 
-var np = preload("res://m_numpy.gd") 
+var np = preload("res://scripts/m_numpy.gd") 
 
 var primal_costs 		= []
 var primal_constraints 	= []

@@ -18,9 +18,9 @@ func _ready():
 
 func _on_Menu_pressed():
 	music_position = _player.get_playback_position()
-	get_tree().change_scene("res://Menu.tscn")
+	get_tree().change_scene("res://scenes/Menu.tscn")
 	_player.play(music_position)
 
 
 func _on_TextureButton_pressed():
-	get_tree().change_scene("res://Scene1.tscn")
+	get_tree().change_scene("res://scenes/Scene1.tscn")
