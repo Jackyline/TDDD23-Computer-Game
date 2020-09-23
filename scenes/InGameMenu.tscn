@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/InGameMenu.gd" type="Script" id=2]
+
+
+[sub_resource type="GradientTexture" id=1]
+
+[node name="InGameMenu" type="Control"]
+margin_left = 3.54234
+margin_top = -0.622169
+margin_right = 1026.54
+margin_bottom = 599.377
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 436.567
+margin_top = 202.065
+margin_right = 571.567
+margin_bottom = 401.065
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 444.8
+margin_top = 208.204
+margin_right = 564.8
+margin_bottom = 397.204
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameMenu" type="Label" parent="VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "Game Menu"
+align = 1
+
+[node name="Menu" type="Button" parent="VBoxContainer"]
+margin_top = 32.0
+margin_right = 120.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+
+[node name="Levels" type="Button" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 120.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+text = "Levels"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 120.0
+margin_bottom = 142.0
+custom_fonts/font = ExtResource( 1 )
+text = "Settings"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 146.0
+margin_right = 120.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

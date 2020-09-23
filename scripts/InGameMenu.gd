@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -14,3 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
+
+
+func _on_Levels_pressed():
+	get_tree().change_scene("res://scenes/LevelSelect.tscn")
+
+
+func _on_Menu_pressed():
+	get_tree().change_scene("res://scenes/Menu.tscn")
