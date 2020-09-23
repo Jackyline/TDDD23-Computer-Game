@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://textures/icon.png" type="Texture" id=2]
@@ -12,6 +12,10 @@
 [ext_resource path="res://textures/background.png" type="Texture" id=10]
 [ext_resource path="res://textures/pipe.png" type="Texture" id=11]
 [ext_resource path="res://textures/pipe-end2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/MovesPanel.gd" type="Script" id=13]
+[ext_resource path="res://scenes/MovesText.gd" type="Script" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -46,7 +50,27 @@ position = Vector2( 499.713, 299.046 )
 scale = Vector2( 0.540482, 0.54419 )
 texture = ExtResource( 10 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="MovesPanel" type="Panel" parent="."]
+margin_left = 153.577
+margin_top = 88.4001
+margin_right = 193.577
+margin_bottom = 128.4
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MovesText" type="Label" parent="MovesPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 7 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelPanel" type="Panel" parent="."]
 margin_left = 404.0
 margin_top = 56.0
 margin_right = 595.0
@@ -57,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TestText" type="Label" parent="Panel"]
+[node name="TestText" type="Label" parent="LevelPanel"]
 margin_right = 191.0
 margin_bottom = 98.0
 custom_fonts/font = ExtResource( 7 )

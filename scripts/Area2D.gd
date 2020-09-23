@@ -13,12 +13,13 @@ func _ready():
 			sprites.append(sprite)
 
 	print("constraints: ", _get_constraints())
-	
 	print("solution: ", simplex.new(_get_costs(), _get_constraints()).get_solution())
 
 func _submit():
 	print("calculating optimum")
 	players_solution.clear()
+	print("Players moves: ", self._get_player_moves())
+	print(self._get_player_tiles())
 	for sprite in sprites:
 		players_solution.append(sprite.is_lifted)
 
@@ -48,4 +49,16 @@ func _get_constraints():
 		res.append(temp[k])
 	
 	return res
+
+func _get_player_moves():
+	return get_node("/root/Level 1/MovesPanel/MovesText").moves_cnt
 	
+func _get_player_tiles():
+	var res = []
+	for sprite in sprites:
+		if sprite.is_lifted:
+			res.append(1)
+		else:
+			res.append(0)
+			
+	return res
