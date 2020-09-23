@@ -15,11 +15,11 @@
 [ext_resource path="res://scenes/MovesPanel.gd" type="Script" id=13]
 [ext_resource path="res://scenes/MovesText.gd" type="Script" id=14]
 
-[sub_resource type="StyleBoxEmpty" id=4]
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="GDScript" id=3]
 script/source = "extends Panel
 
 
@@ -40,7 +40,7 @@ func _ready():
 
 "
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 98.4561, 98.7871 )
 
 [node name="Level 1" type="Node2D"]
@@ -55,7 +55,7 @@ margin_left = 153.577
 margin_top = 88.4001
 margin_right = 193.577
 margin_bottom = 128.4
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,8 +75,8 @@ margin_left = 404.0
 margin_top = 56.0
 margin_right = 595.0
 margin_bottom = 154.0
-custom_styles/panel = SubResource( 1 )
-script = SubResource( 2 )
+custom_styles/panel = SubResource( 2 )
+script = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -98,7 +98,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
 position = Vector2( -0.812592, 0.964722 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="x0" type="Sprite" parent="Board"]
 position = Vector2( -96.1773, -95.7014 )
@@ -191,7 +191,7 @@ pipes = [ 0 ]
 cost = 1
 order = 5
 
-[node name="Sprite" type="Sprite" parent="Board/x5"]
+[node name="Sprite5" type="Sprite" parent="Board/x5"]
 position = Vector2( 474, 403 )
 scale = Vector2( 15.8125, 13.5938 )
 texture = ExtResource( 2 )
