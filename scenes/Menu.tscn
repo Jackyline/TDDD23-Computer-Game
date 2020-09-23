@@ -1,11 +1,51 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/LevelSelector.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Start.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Exit.gd" type="Script" id=4]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var data
+
+func load_save() -> Dictionary:
+	var f := File.new()
+	f.open(\"res://save.json\", File.READ)
+	var result := JSON.parse(f.get_as_text())
+	f.close()
+
+	if result.error:
+		save({
+		\"levels\": {}}
+		)
+		result.result = {\"levels\": {}}
+	print(\"SUCCESS LOAD\")
+	return result.result as Dictionary
+
+func save(data: Dictionary):
+	var f := File.new()
+	f.open(\"res://save.json\", File.WRITE)
+	prints(\"Saving to\", f.get_path_absolute())
+	f.store_string(JSON.print(data))
+	print(\"CREATED SAVE FILE\")
+	f.close()
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	data = load_save()
+	print(data)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
 [node name="MainMenu" type="Node2D"]
+script = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = -0.122437
@@ -66,7 +106,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="ready" from="." to="Control/Start" method="_on_MainMenu_ready"]
 [connection signal="pressed" from="Control/Start" to="Control/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Exit" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
