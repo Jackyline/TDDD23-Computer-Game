@@ -22,7 +22,19 @@ func _submit():
 	print(self._get_player_tiles())
 	for sprite in sprites:
 		players_solution.append(sprite.is_lifted)
-
+		
+	# KOLLA HIT DAWID!
+	# Added for saving the progress of the level
+	# Du får fixa så om det blir success (klarar banan) så görs detta.
+	# EY OH! LET'S GO! :D :D
+	var minutes = int(self._get_player_timer() / 60)
+	var seconds = int(self._get_player_timer() % 60)
+	var timespend = ("%02d" % minutes) + (":%02d" % seconds)
+	# Maybe switch scene name? Almost get_parent()get_parent()...
+	var levelNr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
+	global.data["levels"][levelNr] = [str(self._get_player_moves()), timespend]
+	global.save(global.data)
+	
 func _get_costs():
 	var res = []
 	for i in sprites.size():
@@ -52,6 +64,9 @@ func _get_constraints():
 
 func _get_player_moves():
 	return get_node("/root/Level 1/MovesPanel/MovesText").moves_cnt
+	
+func _get_player_timer():
+	return get_node("/root/Level 1/TimerPanel/Timer").time
 	
 func _get_player_tiles():
 	var res = []

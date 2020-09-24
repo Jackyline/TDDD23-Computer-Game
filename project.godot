@@ -22,6 +22,7 @@ config/icon="res://textures/icon.png"
 [autoload]
 
 MusicController="*res://scripts/MusicController.gd"
+global="*res://scripts/global.gd"
 
 [display]
 
