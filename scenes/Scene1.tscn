@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://textures/icon.png" type="Texture" id=2]
@@ -8,21 +8,22 @@
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/mute.png" type="Texture" id=8]
-[ext_resource path="res://textures/pipe-end.png" type="Texture" id=9]
+[ext_resource path="res://textures/up-right.png" type="Texture" id=9]
 [ext_resource path="res://textures/background.png" type="Texture" id=10]
 [ext_resource path="res://textures/pipe.png" type="Texture" id=11]
 [ext_resource path="res://textures/pipe-end2.png" type="Texture" id=12]
 [ext_resource path="res://scenes/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
-
-[sub_resource type="StyleBoxEmpty" id=5]
+[ext_resource path="res://scenes/tests.gd" type="Script" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="GDScript" id=4]
 script/source = "extends Panel
 
 
@@ -43,8 +44,8 @@ func _ready():
 
 "
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 98.4561, 98.7871 )
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 259.673, 197.608 )
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 15 )
@@ -61,7 +62,7 @@ margin_left = 153.577
 margin_top = 130.0
 margin_right = 193.577
 margin_bottom = 170.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -80,7 +81,7 @@ margin_left = 153.577
 margin_top = 88.4001
 margin_right = 193.577
 margin_bottom = 128.4
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -99,8 +100,8 @@ margin_left = 404.0
 margin_top = 56.0
 margin_right = 595.0
 margin_bottom = 154.0
-custom_styles/panel = SubResource( 2 )
-script = SubResource( 3 )
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,10 +123,10 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
 position = Vector2( -0.812592, 0.964722 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="x0" type="Sprite" parent="Board"]
-position = Vector2( -96.1773, -95.7014 )
+position = Vector2( -251.743, -183.6 )
 scale = Vector2( 0.968413, 0.961812 )
 texture = ExtResource( 9 )
 centered = false
@@ -134,9 +135,10 @@ pipes = [ 0 ]
 cost = 1
 
 [node name="Sprite" type="Sprite" parent="Board/x0"]
-position = Vector2( 30.9712, 29.2229 )
+position = Vector2( 63.7547, 55.728 )
 scale = Vector2( 1.03262, 1.03971 )
 texture = ExtResource( 2 )
+script = ExtResource( 16 )
 
 [node name="x1" type="Sprite" parent="Board"]
 position = Vector2( -34.49, -95.4258 )
