@@ -108,8 +108,6 @@ func _transform_dual_tab(var p):
 		if i != p[0] && self.dual_tab[i][p[1]] != 0:
 			var row_to_add = np.m_multiply_row(self.dual_tab[p[0]], -self.dual_tab[i][p[1]])
 			self.dual_tab[i] = np.m_add_rows(row_to_add, self.dual_tab[i])
-			
-	#self._update_in_out_vars(p)
 
 func _solve():
 	self._init_primal_A()
@@ -131,3 +129,18 @@ func get_solution():
 
 func get_opt_cost():
 	return self.dual_tab[0][-1]
+
+func is_correct(solution):
+	for constraint in self.primal_constraints:
+		var constraint_sum = 0
+		for i in constraint.size():
+			if constraint[i] > 0 and solution[i] > 0:
+				constraint_sum += 1
+		if constraint_sum < 1:
+			return false
+	return true
+
+func is_optimal(moves):
+	print("lala")
+	print(moves)
+	return moves >= self.get_opt_cost()

@@ -1,11 +1,13 @@
 extends Area2D		
+var simplex = load("res://scripts/simplex.gd")
+var simplex_inst
 
 var sprites = []
-var players_solution = []
+var player_solution = []
+
 
 func _ready():
-	var simplex = load("res://scripts/simplex.gd")
-	#.new([1,1,1,1], [[1,1,0,0], [0,0,1,1]]) 
+	simplex_inst = simplex.new([1,1,1,1], [[1,1,0,0], [0,0,1,1]])
 	#print(thing.get_val() , " is a value from simplex")
 	
 	for sprite in self.get_children():
@@ -17,11 +19,11 @@ func _ready():
 
 func _submit():
 	print("calculating optimum")
-	players_solution.clear()
+	player_solution.clear()
 	print("Players moves: ", self._get_player_moves())
 	print(self._get_player_tiles())
 	for sprite in sprites:
-		players_solution.append(sprite.is_lifted)
+		player_solution.append(sprite.is_lifted)
 		
 	# KOLLA HIT DAWID!
 	# Added for saving the progress of the level
@@ -31,9 +33,19 @@ func _submit():
 	var seconds = int(self._get_player_timer() % 60)
 	var timespend = ("%02d" % minutes) + (":%02d" % seconds)
 	# Maybe switch scene name? Almost get_parent()get_parent()...
-	var levelNr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
-	global.data["levels"][levelNr] = [str(self._get_player_moves()), timespend]
+	var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
+	global.data["levels"][level_nr] = [str(self._get_player_moves()), timespend]
 	global.save(global.data)
+	
+	# if correct show some points...
+	# for now change level
+	if simplex_inst.is_correct([1,0,1,0]):
+		var next_lvl = int(level_nr) + 1
+		get_tree().change_scene("res://scenes/Scene"+str(next_lvl)+".tscn")
+	
+		# check if solution is optimal
+		if simplex_inst.is_optimal(self._get_player_moves()):
+			print("solution is optimal")
 	
 func _get_costs():
 	var res = []

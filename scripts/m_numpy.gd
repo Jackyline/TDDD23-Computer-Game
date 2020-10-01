@@ -49,3 +49,9 @@ static func m_splice(var arr, var from, var to):
 		if i >= from && i <= to-1:
 			res.append(arr[i])
 	return res
+	
+static func m_sum(var arr):
+	var res = 0
+	for e in arr:
+		res += e
+	return res

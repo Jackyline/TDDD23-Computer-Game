@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 323.0
+margin_top = 241.0
+margin_right = 623.0
+margin_bottom = 301.0
+custom_fonts/font = ExtResource( 1 )
+text = "Hello Hannes, my best friend"
+__meta__ = {
+"_edit_use_anchors_": false
+}
