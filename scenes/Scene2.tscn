@@ -10,7 +10,7 @@ margin_top = 241.0
 margin_right = 623.0
 margin_bottom = 301.0
 custom_fonts/font = ExtResource( 1 )
-text = "Hello Hannes, my best friend"
+text = "Winner winner chicken dinner!"
 __meta__ = {
 "_edit_use_anchors_": false
 }

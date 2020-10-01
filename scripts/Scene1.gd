@@ -4,6 +4,7 @@ onready var menu = preload("res://scenes/InGameMenu.tscn").instance()
 
 
 func _ready():
+	print(OS.get_real_window_size())
 	set_process(true)
 
 func _process(delta):

@@ -1,21 +1,20 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
-[ext_resource path="res://textures/icon.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Area2D.gd" type="Script" id=4]
 [ext_resource path="res://textures/sound.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
-[ext_resource path="res://textures/mute.png" type="Texture" id=8]
-[ext_resource path="res://textures/up-right.png" type="Texture" id=9]
+[ext_resource path="res://textures/left-start.png" type="Texture" id=8]
+[ext_resource path="res://textures/right-start.png" type="Texture" id=9]
 [ext_resource path="res://textures/background.png" type="Texture" id=10]
-[ext_resource path="res://textures/pipe.png" type="Texture" id=11]
-[ext_resource path="res://textures/pipe-end2.png" type="Texture" id=12]
+[ext_resource path="res://textures/horizontal.png" type="Texture" id=11]
+[ext_resource path="res://textures/tile.png" type="Texture" id=12]
 [ext_resource path="res://scenes/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
-[ext_resource path="res://scenes/tests.gd" type="Script" id=16]
+[ext_resource path="res://scenes/tile_object.gd" type="Script" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -44,24 +43,41 @@ func _ready():
 
 "
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 259.673, 197.608 )
+[sub_resource type="GDScript" id=5]
+script/source = "extends Sprite
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 63.886, 63.9349 )
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 15 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 499.713, 299.046 )
-scale = Vector2( 0.540482, 0.54419 )
+position = Vector2( 511.408, 304.164 )
+scale = Vector2( 1.06338, 1.06758 )
 texture = ExtResource( 10 )
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerPanel" type="Panel" parent="."]
-margin_left = 153.577
-margin_top = 130.0
-margin_right = 193.577
-margin_bottom = 170.0
+margin_left = 80.0
+margin_top = 129.6
+margin_right = 120.0
+margin_bottom = 169.6
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,10 +93,10 @@ __meta__ = {
 }
 
 [node name="MovesPanel" type="Panel" parent="."]
-margin_left = 153.577
-margin_top = 88.4001
-margin_right = 193.577
-margin_bottom = 128.4
+margin_left = 80.0
+margin_top = 88.0
+margin_right = 120.0
+margin_bottom = 128.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,10 +112,10 @@ __meta__ = {
 }
 
 [node name="LevelPanel" type="Panel" parent="."]
-margin_left = 404.0
-margin_top = 56.0
-margin_right = 595.0
-margin_bottom = 154.0
+margin_left = 416.0
+margin_top = 8.0
+margin_right = 607.0
+margin_bottom = 106.0
 custom_styles/panel = SubResource( 3 )
 script = SubResource( 4 )
 __meta__ = {
@@ -107,6 +123,7 @@ __meta__ = {
 }
 
 [node name="TestText" type="Label" parent="LevelPanel"]
+margin_left = -3.8147e-06
 margin_right = 191.0
 margin_bottom = 98.0
 custom_fonts/font = ExtResource( 7 )
@@ -118,164 +135,335 @@ __meta__ = {
 }
 
 [node name="Board" type="Area2D" parent="."]
-position = Vector2( 500, 300 )
+position = Vector2( 583.408, 312.164 )
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
-position = Vector2( -0.812592, 0.964722 )
-shape = SubResource( 5 )
-
-[node name="x0" type="Sprite" parent="Board"]
-position = Vector2( -251.743, -183.6 )
-scale = Vector2( 0.968413, 0.961812 )
-texture = ExtResource( 9 )
-centered = false
-script = ExtResource( 3 )
-pipes = [ 0 ]
+[node name="x0" type="Area2D" parent="Board"]
+script = ExtResource( 16 )
 cost = 1
 
-[node name="Sprite" type="Sprite" parent="Board/x0"]
-position = Vector2( 63.7547, 55.728 )
-scale = Vector2( 1.03262, 1.03971 )
-texture = ExtResource( 2 )
-script = ExtResource( 16 )
-
-[node name="x1" type="Sprite" parent="Board"]
-position = Vector2( -34.49, -95.4258 )
-scale = Vector2( 0.986, 0.962 )
-texture = ExtResource( 11 )
+[node name="x0" type="Sprite" parent="Board/x0"]
+position = Vector2( -261.443, -198.051 )
 centered = false
 script = ExtResource( 3 )
-column = 1
-pipes = [ 0, 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x0"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x0col" type="CollisionShape2D" parent="Board/x0"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x0"]
+margin_left = -239.0
+margin_top = -177.0
+margin_right = -150.0
+margin_bottom = -92.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x1" type="Area2D" parent="Board"]
+position = Vector2( 128, 0 )
+script = ExtResource( 16 )
 cost = 1
 order = 1
 
-[node name="Sprite" type="Sprite" parent="Board/x1"]
-position = Vector2( 33.2427, 29.7049 )
-scale = Vector2( 1.04081, 1.04421 )
-texture = ExtResource( 2 )
-
-[node name="x2" type="Sprite" parent="Board"]
-position = Vector2( 28.4997, -95.2392 )
-scale = Vector2( 0.968, 0.962 )
-texture = ExtResource( 12 )
+[node name="x1" type="Sprite" parent="Board/x1"]
+position = Vector2( -261.333, -197.894 )
 centered = false
 script = ExtResource( 3 )
-column = 2
-pipes = [ 0 ]
+pipes = [ 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x1"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x1col" type="CollisionShape2D" parent="Board/x1"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x1"]
+margin_left = -242.0
+margin_top = -177.0
+margin_right = -153.0
+margin_bottom = -92.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x2" type="Area2D" parent="Board"]
+position = Vector2( 256, 0 )
+script = ExtResource( 16 )
 cost = 1
 order = 2
 
-[node name="Sprite" type="Sprite" parent="Board/x2"]
-position = Vector2( 34.2748, 30.2933 )
-scale = Vector2( 1.08639, 1.06888 )
-texture = ExtResource( 2 )
-
-[node name="x3" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, -31.7408 )
-scale = Vector2( 0.0631737, 0.0763722 )
-texture = ExtResource( 8 )
+[node name="x2" type="Sprite" parent="Board/x2"]
+position = Vector2( -261.333, -197.894 )
 centered = false
 script = ExtResource( 3 )
-row = 1
-pipes = [ 0 ]
+pipes = [ 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x2"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x2col" type="CollisionShape2D" parent="Board/x2"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x2"]
+margin_left = -243.0
+margin_top = -177.0
+margin_right = -154.0
+margin_bottom = -92.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x3" type="Area2D" parent="Board"]
+position = Vector2( 0, 128 )
+script = ExtResource( 16 )
+pipes = [ 1 ]
 cost = 1
 order = 3
+clickable = true
 
-[node name="Sprite" type="Sprite" parent="Board/x3"]
-position = Vector2( 490.54, 403 )
-scale = Vector2( 16.3294, 13.5938 )
-texture = ExtResource( 2 )
-
-[node name="x4" type="Sprite" parent="Board"]
-position = Vector2( -32.4332, -31.7408 )
-scale = Vector2( 0.0631737, 0.0763722 )
+[node name="x3" type="Sprite" parent="Board/x3"]
+position = Vector2( -261.443, -198.051 )
 texture = ExtResource( 8 )
 centered = false
 script = ExtResource( 3 )
-row = 1
-column = 1
-pipes = [ 0 ]
+pipes = [ 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x3"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x0col" type="CollisionShape2D" parent="Board/x3"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x3"]
+margin_left = -239.0
+margin_top = -175.0
+margin_right = -150.0
+margin_bottom = -90.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x4" type="Area2D" parent="Board"]
+position = Vector2( 128, 128 )
+script = ExtResource( 16 )
+pipes = [ 1 ]
 cost = 1
 order = 4
+clickable = true
 
-[node name="Sprite" type="Sprite" parent="Board/x4"]
-position = Vector2( 490.54, 403 )
-scale = Vector2( 16.3294, 13.5938 )
-texture = ExtResource( 2 )
-
-[node name="x5" type="Sprite" parent="Board"]
-position = Vector2( 31.5668, -31.7409 )
-scale = Vector2( 0.0647278, 0.0763723 )
-texture = ExtResource( 8 )
+[node name="x4" type="Sprite" parent="Board/x4"]
+position = Vector2( -261.333, -197.894 )
+texture = ExtResource( 11 )
 centered = false
 script = ExtResource( 3 )
-row = 1
-column = 2
-pipes = [ 0 ]
+pipes = [ 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x4"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x1col" type="CollisionShape2D" parent="Board/x4"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x4"]
+margin_left = -242.0
+margin_top = -175.0
+margin_right = -153.0
+margin_bottom = -90.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x5" type="Area2D" parent="Board"]
+position = Vector2( 256, 128 )
+script = ExtResource( 16 )
+pipes = [ 1 ]
 cost = 1
 order = 5
+clickable = true
 
-[node name="Sprite5" type="Sprite" parent="Board/x5"]
-position = Vector2( 474, 403 )
-scale = Vector2( 15.8125, 13.5938 )
-texture = ExtResource( 2 )
-
-[node name="x6" type="Sprite" parent="Board"]
-position = Vector2( -96.4332, 32.2591 )
-scale = Vector2( 0.0653061, 0.0763723 )
-texture = ExtResource( 8 )
+[node name="x5" type="Sprite" parent="Board/x5"]
+position = Vector2( -261.333, -197.894 )
+texture = ExtResource( 9 )
 centered = false
 script = ExtResource( 3 )
-row = 2
-pipes = [ 0 ]
+pipes = [ 1 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x5"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x5col" type="CollisionShape2D" parent="Board/x5"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x5"]
+margin_left = -243.0
+margin_top = -175.0
+margin_right = -154.0
+margin_bottom = -90.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x6" type="Area2D" parent="Board"]
+position = Vector2( 0, 256 )
+script = ExtResource( 16 )
 cost = 1
 order = 6
 
-[node name="Sprite" type="Sprite" parent="Board/x6"]
-position = Vector2( 474, 403 )
-scale = Vector2( 15.8125, 13.5938 )
-texture = ExtResource( 2 )
-
-[node name="x7" type="Sprite" parent="Board"]
-position = Vector2( -32.4332, 32.2591 )
-scale = Vector2( 0.0631737, 0.0763723 )
-texture = ExtResource( 8 )
+[node name="x6" type="Sprite" parent="Board/x6"]
+position = Vector2( -261.443, -198.051 )
 centered = false
 script = ExtResource( 3 )
-row = 2
-column = 1
 pipes = [ 0 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x6"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x6col" type="CollisionShape2D" parent="Board/x6"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x6"]
+margin_left = -239.0
+margin_top = -172.156
+margin_right = -150.0
+margin_bottom = -87.1563
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x7" type="Area2D" parent="Board"]
+position = Vector2( 128, 256 )
+script = ExtResource( 16 )
 cost = 1
 order = 7
 
-[node name="Sprite" type="Sprite" parent="Board/x7"]
-position = Vector2( 490.54, 403 )
-scale = Vector2( 16.3294, 13.5938 )
-texture = ExtResource( 2 )
-
-[node name="x8" type="Sprite" parent="Board"]
-position = Vector2( 29.4955, 29.8152 )
-scale = Vector2( 0.0668414, 0.0792886 )
-texture = ExtResource( 8 )
+[node name="x6" type="Sprite" parent="Board/x7"]
+position = Vector2( -261.443, -198.051 )
 centered = false
 script = ExtResource( 3 )
-row = 2
-column = 2
+pipes = [ 0 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x7"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x6col" type="CollisionShape2D" parent="Board/x7"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x7"]
+margin_left = -242.0
+margin_top = -172.156
+margin_right = -153.0
+margin_bottom = -87.1563
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x8" type="Area2D" parent="Board"]
+position = Vector2( 256, 256 )
+script = ExtResource( 16 )
 cost = 1
 order = 8
 
-[node name="Sprite" type="Sprite" parent="Board/x8"]
-position = Vector2( 489.862, 419 )
-scale = Vector2( 15.3168, 13.0938 )
-texture = ExtResource( 2 )
+[node name="x8" type="Sprite" parent="Board/x8"]
+position = Vector2( -261.443, -198.051 )
+centered = false
+script = ExtResource( 3 )
+pipes = [ 0 ]
+cost = 1
+
+[node name="weight" type="Sprite" parent="Board/x8"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( -197.578, -135.166 )
+texture = ExtResource( 12 )
+script = SubResource( 5 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x8"]
+position = Vector2( -197.373, -133.463 )
+shape = SubResource( 6 )
+
+[node name="clicks" type="Label" parent="Board/x8"]
+margin_left = -243.0
+margin_top = -172.156
+margin_right = -154.0
+margin_bottom = -87.1563
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
-margin_left = 451.0
-margin_top = 424.793
-margin_right = 551.0
-margin_bottom = 459.793
+margin_left = 464.0
+margin_top = 520.0
+margin_right = 564.0
+margin_bottom = 555.0
 text = "SUBMIT"
 script = ExtResource( 1 )
 __meta__ = {
@@ -284,17 +472,17 @@ __meta__ = {
 }
 
 [node name="Sound" type="Button" parent="."]
-margin_left = 944.0
-margin_top = 28.0
-margin_right = 992.0
-margin_bottom = 73.0
+margin_left = 954.959
+margin_top = 36.7841
+margin_right = 1002.96
+margin_bottom = 81.7841
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="Sound"]
-position = Vector2( 23.3828, 21.827 )
+position = Vector2( 23.3828, 21.197 )
 scale = Vector2( 0.0253536, 0.0288003 )
 texture = ExtResource( 5 )
 [connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
