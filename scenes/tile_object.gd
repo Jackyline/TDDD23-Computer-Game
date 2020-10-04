@@ -25,18 +25,38 @@ func _ready():
 	moves_label = get_node("/root/Level 1/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable:
-		if  !is_lifted:
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0:
+		if tempcost == 1:
 			$weight.modulate.a = 0
 			is_lifted = !is_lifted
-			moves_label._increment_move_cnt()
-			print(tempcost)
-			tempcost += -1
-			$clicks.text = str(tempcost)
-		elif is_lifted:
-			$weight.modulate.a = 0.5
-			is_lifted = !is_lifted
-			moves_label._decrement_move_cnt()
-			tempcost += 1
-			$clicks.text = str(tempcost)
-		#moves_label.text = str("Moves: ", moves_cnt)
+		moves_label._increment_move_cnt()
+		print(tempcost)
+		tempcost += -1
+		$clicks.text = str(tempcost)
+	elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT and clickable and tempcost < cost:
+		$weight.modulate.a = 0.5
+		if tempcost == 0:
+			is_lifted = !is_lifted 
+		moves_label._decrement_move_cnt()
+		tempcost += 1
+		$clicks.text = str(tempcost)
+
+
+
+
+#func _input_event(viewport, event, shape_idx):
+#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable:
+#		if  !is_lifted:
+#			$weight.modulate.a = 0
+#			is_lifted = !is_lifted
+#			moves_label._increment_move_cnt()
+#			print(tempcost)
+#			tempcost += -1
+#			$clicks.text = str(tempcost)
+#		elif is_lifted:
+#			$weight.modulate.a = 0.5
+#			is_lifted = !is_lifted
+#			moves_label._decrement_move_cnt()
+#			tempcost += 1
+#			$clicks.text = str(tempcost)
+#		#moves_label.text = str("Moves: ", moves_cnt)
