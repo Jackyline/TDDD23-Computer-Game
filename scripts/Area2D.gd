@@ -57,7 +57,7 @@ func _submit():
 		#dialog.get_node("PopupDialog/Star3").scale = scale
 		dialog.get_node("PopupDialog").nextlevel = int(level_nr) + 1
 		dialog.get_node("PopupDialog").retry = int(level_nr)
-		
+		get_node("/root/Level 1/TimerPanel/Timer").timer.paused = true
 		#var next_lvl = int(level_nr) + 1
 		#get_tree().change_scene("res://scenes/Scene"+str(next_lvl)+".tscn")
 	
