@@ -7,7 +7,6 @@ var tiles = []
 var player_solution = []
 
 onready var dialog = preload("res://scenes/level_finished.tscn").instance()
-var star = preload("res://textures/Star Filled.png")
 
 func _ready():
 	#simplex_inst = simplex.new([1,1,1,1], [[1,1,0,0], [0,0,1,1]])
@@ -37,38 +36,25 @@ func _submit():
 	var timespend = ("%02d" % minutes) + (":%02d" % seconds)
 	# Maybe switch scene name? Almost get_parent()get_parent()...
 	var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
-	global.data["levels"][level_nr] = [str(self._get_player_moves()), timespend]
-	global.save(global.data)
 	
 	# if correct show some points...
 	# for now change level
 	if simplex_inst.is_correct(_get_player_tiles()):
 		print("ADDING DIALOG")
 		add_child(dialog)
-		dialog.get_node("PopupDialog/Moves").text = str(_get_player_moves())
-		dialog.get_node("PopupDialog/Time").text = str(timespend)
-		
-		print("askjfhdskjhfjdshkfjds0", simplex_inst.get_opt_cost())
+		dialog.get_node("PopupDialog")._set_score(str(_get_player_moves()),str(timespend))
 		print("Stars: ", _calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
-		
-		#change stars
-		var scale = dialog.get_node("PopupDialog/Star1").scale
-		dialog.get_node("PopupDialog/Star1").texture = star
-		dialog.get_node("PopupDialog/Star1").scale = scale
-		dialog.get_node("PopupDialog/Star2").texture = star
-		dialog.get_node("PopupDialog/Star2").scale = scale
-		#dialog.get_node("PopupDialog/Star3").texture = star
-		#dialog.get_node("PopupDialog/Star3").scale = scale
+		dialog.get_node("PopupDialog")._set_stars(_calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
 		dialog.get_node("PopupDialog").nextlevel = int(level_nr) + 1
-		dialog.get_node("PopupDialog").retry = int(level_nr)
+		dialog.get_node("PopupDialog").current = int(level_nr)
 		get_node("/root/Level 1/TimerPanel/Timer").timer.paused = true
-		#var next_lvl = int(level_nr) + 1
-		#get_tree().change_scene("res://scenes/Scene"+str(next_lvl)+".tscn")
-	
-		# check if solution is optimal
-		if simplex_inst.is_optimal(self._get_player_moves()):
-			print("solution is optimal")
-	
+		
+		_disable_tiles()
+		
+func _disable_tiles():
+	for tile in tiles:
+		tile.clickable = false
+		
 func _get_costs():
 	var res = []
 	for i in tiles.size():
