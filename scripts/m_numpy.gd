@@ -55,3 +55,28 @@ static func m_sum(var arr):
 	for e in arr:
 		res += e
 	return res
+
+static func m_abs(var n):
+	if n < 0:
+		return -n
+	else:
+		return n
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

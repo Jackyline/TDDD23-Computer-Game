@@ -141,6 +141,4 @@ func is_correct(solution):
 	return true
 
 func is_optimal(moves):
-	print("lala")
-	print(moves)
 	return moves >= self.get_opt_cost()

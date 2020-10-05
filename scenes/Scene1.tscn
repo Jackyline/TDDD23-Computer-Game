@@ -282,7 +282,7 @@ __meta__ = {
 position = Vector2( 128, 128 )
 script = ExtResource( 2 )
 pipes = [ 1 ]
-cost = 1
+cost = 3
 order = 4
 clickable = true
 
@@ -320,7 +320,7 @@ __meta__ = {
 position = Vector2( 256, 128 )
 script = ExtResource( 2 )
 pipes = [ 1 ]
-cost = 1
+cost = 3
 order = 5
 clickable = true
 

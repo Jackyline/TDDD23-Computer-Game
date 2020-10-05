@@ -1,4 +1,5 @@
 extends Area2D		
+var np = preload("res://scripts/m_numpy.gd") 
 var simplex = load("res://scripts/simplex.gd")
 var simplex_inst
 
@@ -46,6 +47,9 @@ func _submit():
 		add_child(dialog)
 		dialog.get_node("PopupDialog/Moves").text = str(_get_player_moves())
 		dialog.get_node("PopupDialog/Time").text = str(timespend)
+		
+		print("askjfhdskjhfjdshkfjds0", simplex_inst.get_opt_cost())
+		print("Stars: ", _calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
 		
 		#change stars
 		var scale = dialog.get_node("PopupDialog/Star1").scale
@@ -107,3 +111,14 @@ func _get_player_tiles():
 			res.append(0)
 			
 	return res
+
+func _calculate_reward(var opt, var sol):
+	var res = np.m_abs(opt - sol)
+	if res <= 0:
+		return 3
+	elif res > 0 and res <= 0.25*sol:
+		return 2
+	elif res > sol*0.25:
+		return 1
+	else:
+		return 0
