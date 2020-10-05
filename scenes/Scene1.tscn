@@ -1,6 +1,7 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tile_object.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Area2D.gd" type="Script" id=4]
 [ext_resource path="res://textures/sound.png" type="Texture" id=5]
@@ -14,7 +15,6 @@
 [ext_resource path="res://scenes/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
-[ext_resource path="res://scenes/tile_object.gd" type="Script" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -139,7 +139,7 @@ position = Vector2( 583.408, 312.164 )
 script = ExtResource( 4 )
 
 [node name="x0" type="Area2D" parent="Board"]
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 
 [node name="x0" type="Sprite" parent="Board/x0"]
@@ -172,7 +172,7 @@ __meta__ = {
 
 [node name="x1" type="Area2D" parent="Board"]
 position = Vector2( 128, 0 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 order = 1
 
@@ -207,7 +207,7 @@ __meta__ = {
 
 [node name="x2" type="Area2D" parent="Board"]
 position = Vector2( 256, 0 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 order = 2
 
@@ -242,7 +242,7 @@ __meta__ = {
 
 [node name="x3" type="Area2D" parent="Board"]
 position = Vector2( 0, 128 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 2
 order = 3
@@ -280,7 +280,7 @@ __meta__ = {
 
 [node name="x4" type="Area2D" parent="Board"]
 position = Vector2( 128, 128 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 1
 order = 4
@@ -318,7 +318,7 @@ __meta__ = {
 
 [node name="x5" type="Area2D" parent="Board"]
 position = Vector2( 256, 128 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 1
 order = 5
@@ -356,7 +356,7 @@ __meta__ = {
 
 [node name="x6" type="Area2D" parent="Board"]
 position = Vector2( 0, 256 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 order = 6
 
@@ -391,7 +391,7 @@ __meta__ = {
 
 [node name="x7" type="Area2D" parent="Board"]
 position = Vector2( 128, 256 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 order = 7
 
@@ -426,7 +426,7 @@ __meta__ = {
 
 [node name="x8" type="Area2D" parent="Board"]
 position = Vector2( 256, 256 )
-script = ExtResource( 16 )
+script = ExtResource( 2 )
 cost = 1
 order = 8
 

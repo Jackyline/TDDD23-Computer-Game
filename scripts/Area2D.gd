@@ -5,6 +5,8 @@ var simplex_inst
 var tiles = []
 var player_solution = []
 
+onready var dialog = preload("res://scenes/level_finished.tscn").instance()
+var star = preload("res://textures/Star Filled.png")
 
 func _ready():
 	#simplex_inst = simplex.new([1,1,1,1], [[1,1,0,0], [0,0,1,1]])
@@ -40,8 +42,24 @@ func _submit():
 	# if correct show some points...
 	# for now change level
 	if simplex_inst.is_correct(_get_player_tiles()):
-		var next_lvl = int(level_nr) + 1
-		get_tree().change_scene("res://scenes/Scene"+str(next_lvl)+".tscn")
+		print("ADDING DIALOG")
+		add_child(dialog)
+		dialog.get_node("PopupDialog/Moves").text = str(_get_player_moves())
+		dialog.get_node("PopupDialog/Time").text = str(timespend)
+		
+		#change stars
+		var scale = dialog.get_node("PopupDialog/Star1").scale
+		dialog.get_node("PopupDialog/Star1").texture = star
+		dialog.get_node("PopupDialog/Star1").scale = scale
+		dialog.get_node("PopupDialog/Star2").texture = star
+		dialog.get_node("PopupDialog/Star2").scale = scale
+		#dialog.get_node("PopupDialog/Star3").texture = star
+		#dialog.get_node("PopupDialog/Star3").scale = scale
+		dialog.get_node("PopupDialog").nextlevel = int(level_nr) + 1
+		dialog.get_node("PopupDialog").retry = int(level_nr)
+		
+		#var next_lvl = int(level_nr) + 1
+		#get_tree().change_scene("res://scenes/Scene"+str(next_lvl)+".tscn")
 	
 		# check if solution is optimal
 		if simplex_inst.is_optimal(self._get_player_moves()):
