@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/MenuButton.gd" type="Script" id=2]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/LevelSelect.gd" type="Script" id=4]
 [ext_resource path="res://textures/Star Blank.png" type="Texture" id=5]
+[ext_resource path="res://double-pixel-small.tres" type="DynamicFont" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -32,22 +33,22 @@ __meta__ = {
 }
 
 [node name="Moves" type="Label" parent="1"]
-margin_left = -43.2308
+margin_left = -17.8338
 margin_top = 102.253
-margin_right = 30.7692
+margin_right = 56.1662
 margin_bottom = 140.253
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 6 )
 text = "Moves:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Time" type="Label" parent="1"]
-margin_left = -42.8338
+margin_left = -10.8338
 margin_top = 128.034
-margin_right = 19.1662
+margin_right = 51.1662
 margin_bottom = 166.034
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 6 )
 text = "Time:"
 __meta__ = {
 "_edit_use_anchors_": false

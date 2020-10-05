@@ -9,9 +9,6 @@ var player_solution = []
 onready var dialog = preload("res://scenes/level_finished.tscn").instance()
 
 func _ready():
-	#simplex_inst = simplex.new([1,1,1,1], [[1,1,0,0], [0,0,1,1]])
-	#print(thing.get_val() , " is a value from simplex")
-	
 	for tile in self.get_children():
 		tiles.append(tile)
 	simplex_inst = simplex.new(_get_costs(), _get_constraints())

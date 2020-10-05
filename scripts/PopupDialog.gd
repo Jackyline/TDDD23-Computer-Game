@@ -1,6 +1,4 @@
 extends PopupDialog
-
-
 var star = preload("res://textures/Star Filled.png")
 
 var nextlevel = 2
@@ -9,11 +7,9 @@ var resultStars = 0
 var newTime
 var newMoves
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	show()
-
 
 func _set_score(moves, time):
 	$Time.text = time
@@ -30,7 +26,6 @@ func _set_stars(stars):
 			get_node("Star" + str(i)).texture = star
 			get_node("Star" + str(i)).scale = scale
 
-
 func _on_Next_pressed():
 	var savedStars = global.data["levels"][str(current)][2]
 	var savedTime = _calc_time(global.data["levels"][str(current)][1])
@@ -42,13 +37,10 @@ func _on_Next_pressed():
 	elif savedStars == resultStars and savedMoves > newMoves or savedTime > _calc_time(newTime):
 		global.data["levels"][current] = [newMoves, newTime, resultStars]
 		global.save(global.data)
-
 	get_tree().change_scene("res://scenes/Scene"+str(nextlevel)+".tscn")
-
 
 func _on_Retry_pressed():
 	get_tree().change_scene("res://scenes/Scene"+str(current)+".tscn")
-
 
 func _calc_time(time):
 	var totaltime = 0
