@@ -23,9 +23,9 @@ __meta__ = {
 }
 
 [node name="1" type="TextureButton" parent="."]
-margin_left = 99.2308
+margin_left = 96.0
 margin_top = 68.2475
-margin_right = 163.231
+margin_right = 160.0
 margin_bottom = 132.247
 texture_normal = ExtResource( 1 )
 __meta__ = {
@@ -68,5 +68,53 @@ texture = ExtResource( 5 )
 position = Vector2( 68.7692, 83.7525 )
 scale = Vector2( 0.633333, 0.637931 )
 texture = ExtResource( 5 )
+
+[node name="2" type="TextureButton" parent="."]
+margin_left = 241.231
+margin_top = 68.2475
+margin_right = 305.231
+margin_bottom = 132.247
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Moves" type="Label" parent="2"]
+margin_left = -17.8338
+margin_top = 102.253
+margin_right = 56.1662
+margin_bottom = 140.253
+custom_fonts/font = ExtResource( 6 )
+text = "Moves:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="2"]
+margin_left = -10.8338
+margin_top = 128.034
+margin_right = 51.1662
+margin_bottom = 166.034
+custom_fonts/font = ExtResource( 6 )
+text = "Time:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star1" type="Sprite" parent="2"]
+position = Vector2( -11.2308, 83.7525 )
+scale = Vector2( 0.633333, 0.637931 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="2"]
+position = Vector2( 28.7692, 83.7525 )
+scale = Vector2( 0.633333, 0.637931 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="2"]
+position = Vector2( 68.7692, 83.7525 )
+scale = Vector2( 0.633333, 0.637931 )
+texture = ExtResource( 5 )
 [connection signal="pressed" from="Menu" to="Menu" method="_on_Menu_pressed"]
 [connection signal="pressed" from="1" to="Menu" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="2" to="Menu" method="_on_2_pressed"]
