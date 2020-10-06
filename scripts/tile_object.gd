@@ -8,7 +8,7 @@ export var cost : int
 export var order : int
 export var clickable : bool
 
-
+onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 onready var tempcost = cost
 
 var moves_label : Label
@@ -22,7 +22,7 @@ func _ready():
 		$clicks.text = str(0)
 	
 	
-	moves_label = get_node("/root/Level 1/MovesPanel/MovesText")
+	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0:

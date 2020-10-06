@@ -5,6 +5,7 @@ onready var slider = get_node("PopupDialog/HSlider") as HSlider
 onready var check_button = get_node("PopupDialog/CheckButton") as CheckButton
 
 func _ready():
+	slider.value = db2linear(_player.get_volume_db())
 	pass
 
 func _on_Exit_pressed():

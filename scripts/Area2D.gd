@@ -7,6 +7,7 @@ var tiles = []
 var player_solution = []
 
 onready var dialog = preload("res://scenes/level_finished.tscn").instance()
+onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 
 func _ready():
 	for tile in self.get_children():
@@ -32,19 +33,17 @@ func _submit():
 	var seconds = int(self._get_player_timer() % 60)
 	var timespend = ("%02d" % minutes) + (":%02d" % seconds)
 	# Maybe switch scene name? Almost get_parent()get_parent()...
-	var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
+
 	
 	# if correct show some points...
 	# for now change level
 	if simplex_inst.is_correct(_get_player_tiles()):
-		print("ADDING DIALOG")
 		add_child(dialog)
-		dialog.get_node("PopupDialog")._set_score(str(_get_player_moves()),str(timespend))
+		dialog.get_node("PopupDialog")._on_start(str(_get_player_moves()), 
+			str(timespend), _calculate_reward(simplex_inst.get_opt_cost(), 
+			_get_player_moves()), int(level_nr))
 		print("Stars: ", _calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
-		dialog.get_node("PopupDialog")._set_stars(_calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
-		dialog.get_node("PopupDialog").nextlevel = int(level_nr) + 1
-		dialog.get_node("PopupDialog").current = int(level_nr)
-		get_node("/root/Level 1/TimerPanel/Timer").timer.paused = true
+		get_node("/root/Level "+ str(level_nr) + "/TimerPanel/Timer").timer.paused = true
 		
 		_disable_tiles()
 		
@@ -80,10 +79,10 @@ func _get_constraints():
 	return res
 
 func _get_player_moves():
-	return get_node("/root/Level 1/MovesPanel/MovesText").moves_cnt
+	return get_node("/root/Level "+ str(level_nr)+ "/MovesPanel/MovesText").moves_cnt
 	
 func _get_player_timer():
-	return get_node("/root/Level 1/TimerPanel/Timer").time
+	return get_node("/root/Level "+ str(level_nr)+ "/TimerPanel/Timer").time
 	
 func _get_player_tiles():
 	var res = []
