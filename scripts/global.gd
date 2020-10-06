@@ -10,9 +10,9 @@ func load_save() -> Dictionary:
 
 	if result.error:
 		save({
-		"levels": {"1" : ["999", "99:99", 0]}}
+		"levels": {"1" : []}}
 		)
-		result.result = {"levels": {"1" : ["999", "99:99", 0]}}
+		result.result = {"levels": {"1" : []}}
 	print("SUCCESS LOAD")
 	return result.result as Dictionary
 

@@ -33,23 +33,24 @@ func _set_stars(stars):
 			get_node("Star" + str(i)).scale = scale
 
 func _on_Next_pressed():
-	global.data["levels"][str(nextlevel)] = ["999", "99:99", 0]
+	global.data["levels"][str(nextlevel)] = []
 	global.save(global.data)
 	if global.data["levels"].has(str(current)):
-		var savedStars = global.data["levels"][str(current)][2]
-		var savedTime = _calc_time(global.data["levels"][str(current)][1])
-		var savedMoves = global.data["levels"][str(current)][0]
-		#Check if we got better result than earlier runs
-		print("STAAAARSSSSS  ",savedStars)
-		if savedStars < resultStars:
-			global.data["levels"][str(current)] = [newMoves, newTime, resultStars]
+		if (global.data["levels"][str(current)].size() != 0):
+			var savedStars = global.data["levels"][str(current)][2]
+			var savedTime = _calc_time(global.data["levels"][str(current)][1])
+			var savedMoves = global.data["levels"][str(current)][0]
+			#Check if we got better result than earlier runs
+			print("STAAAARSSSSS  ",savedStars)
+			if savedStars < resultStars:
+				global.data["levels"][str(current)] = [newMoves, newTime, resultStars]
+				global.save(global.data)
+			elif savedStars == resultStars and savedMoves > newMoves or savedTime > _calc_time(newTime):
+				global.data["levels"][str(current)] = [newMoves, newTime, resultStars]
+				global.save(global.data)
+		else:
+			global.data["levels"][current] = [newMoves, newTime, resultStars]
 			global.save(global.data)
-		elif savedStars == resultStars and savedMoves > newMoves or savedTime > _calc_time(newTime):
-			global.data["levels"][str(current)] = [newMoves, newTime, resultStars]
-			global.save(global.data)
-	else:
-		global.data["levels"][current] = [newMoves, newTime, resultStars]
-		global.save(global.data)
 	get_tree().change_scene("res://scenes/Scene"+str(nextlevel)+".tscn")
 
 func _on_Retry_pressed():

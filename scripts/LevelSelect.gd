@@ -10,10 +10,11 @@ func _ready():
 			get_node(str(level)).disabled = true
 			get_node(str(level)).modulate = Color(1,0,1)
 	for level in global.data.levels:
-		get_node(str(level)).get_child(0).text = "Moves: " + global.data.levels[level][0]
-		get_node(str(level)).get_child(1).text = "Time: " + global.data.levels[level][1]
-		for star in global.data.levels[level][2]:
-			var scale = get_node(str(level)).get_child(2 + star).scale
-			var curstar = get_node(str(level)).get_child(2 + star)
-			curstar.texture = starTexture
-			curstar.scale = scale
+		if global.data.levels[level].size() != 0:
+			get_node(str(level)).get_child(0).text = "Moves: " + global.data.levels[level][0]
+			get_node(str(level)).get_child(1).text = "Time: " + global.data.levels[level][1]
+			for star in global.data.levels[level][2]:
+				var scale = get_node(str(level)).get_child(2 + star).scale
+				var curstar = get_node(str(level)).get_child(2 + star)
+				curstar.texture = starTexture
+				curstar.scale = scale
