@@ -25,7 +25,7 @@ func _ready():
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
-	if Input.is_action_just_released("mouse_released") and tempcost > 0:
+	if Input.is_action_just_released("mouse_released") and tempcost > 0 and clickable:
 		$weight.modulate = Color(0,0,1,0.5)
 		
 	if event is InputEventMouseButton && event.is_action_released("click"):
