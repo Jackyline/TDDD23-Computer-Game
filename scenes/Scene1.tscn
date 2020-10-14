@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
 [ext_resource path="res://textures/hint.png" type="Texture" id=16]
+[ext_resource path="res://double-pixel-small.tres" type="DynamicFont" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -185,6 +186,7 @@ __meta__ = {
 [node name="Board" type="Area2D" parent="."]
 position = Vector2( 583.408, 312.164 )
 script = ExtResource( 4 )
+hints = [ 1, 5 ]
 
 [node name="x0" type="Area2D" parent="Board"]
 script = ExtResource( 2 )
@@ -512,7 +514,21 @@ margin_left = 464.0
 margin_top = 520.0
 margin_right = 564.0
 margin_bottom = 555.0
+custom_fonts/font = ExtResource( 17 )
 text = "SUBMIT"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Hints" type="Button" parent="."]
+margin_left = 835.811
+margin_top = 41.4865
+margin_right = 935.811
+margin_bottom = 76.4865
+custom_fonts/font = ExtResource( 17 )
+text = "HINTS"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -550,4 +566,5 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 16 )
 [connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Button" to="Board" method="_submit"]
+[connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]
 [connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
