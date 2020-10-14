@@ -91,26 +91,26 @@ text = "Full Screen"
 
 [node name="Label2" type="Label" parent="PopupDialog"]
 margin_left = 40.3355
-margin_top = 122.204
+margin_top = 131.204
 margin_right = 181.335
-margin_bottom = 148.204
+margin_bottom = 157.204
 rect_pivot_offset = Vector2( 94.2896, 21.1536 )
 custom_fonts/font = ExtResource( 3 )
 text = "Audio Volume"
 
 [node name="CheckButton" type="CheckButton" parent="PopupDialog"]
-margin_left = 256.253
+margin_left = 253.253
 margin_top = 89.204
-margin_right = 332.253
+margin_right = 329.253
 margin_bottom = 129.204
 focus_mode = 0
 enabled_focus_mode = 0
 
 [node name="HSlider" type="HSlider" parent="PopupDialog"]
 margin_left = 181.335
-margin_top = 129.204
+margin_top = 138.204
 margin_right = 319.335
-margin_bottom = 145.204
+margin_bottom = 154.204
 min_value = 0.001
 max_value = 10.0
 step = 0.001

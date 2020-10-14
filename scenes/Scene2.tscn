@@ -286,7 +286,7 @@ __meta__ = {
 [node name="x4" type="Area2D" parent="Board"]
 position = Vector2( 128, 128 )
 script = ExtResource( 2 )
-pipes = [ 2 ]
+pipes = [ 1, 1 ]
 cost = 3
 order = 4
 clickable = true

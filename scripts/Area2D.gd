@@ -5,17 +5,29 @@ var simplex_inst
 
 var tiles = []
 var player_solution = []
+var hints_number = 0
+var hint_button = null
+var moves_label : Label
 
+export var hints:Array
 onready var dialog = preload("res://scenes/level_finished.tscn").instance()
 onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 
 func _ready():
+	# get hint button reference
+	self.hint_button = get_node("/root/Level "+ str(level_nr)+ "/Hints")
+	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
+	
 	for tile in self.get_children():
 		tiles.append(tile)
+	
 	simplex_inst = simplex.new(_get_costs(), _get_constraints())
 	print("constraints: ", _get_constraints())
 	print("Solution: ", simplex_inst.get_solution())
-
+	
+	self.hints_number = hints.size()
+	print("hints", hints.size())
+	self.hint_button.text = "HINTS: " + str(self.hints_number)
 
 func _submit():
 	print("calculating optimum")
@@ -104,3 +116,20 @@ func _calculate_reward(var opt, var sol):
 		return 1
 	else:
 		return 0
+		
+func _get_hint_tile():
+	if !hints.empty():
+		var front = hints.pop_front()
+		for tile in tiles:
+			if tile.order == front:
+				self.hints_number = hints.size()
+				return tile
+	print("Hint not avaliable!")
+
+
+func _on_Hints_pressed():
+	if !hints.empty():
+		_get_hint_tile()
+		moves_label._increment_move_cnt()
+		self.hint_button.text = "HINTS: " + str(self.hints_number)
+	

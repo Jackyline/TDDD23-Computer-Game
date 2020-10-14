@@ -21,7 +21,6 @@ func _ready():
 	else:
 		$clicks.text = str(0)
 	
-	
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
@@ -40,23 +39,3 @@ func _input_event(viewport, event, shape_idx):
 		moves_label._decrement_move_cnt()
 		tempcost += 1
 		$clicks.text = str(tempcost)
-
-
-
-
-#func _input_event(viewport, event, shape_idx):
-#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable:
-#		if  !is_lifted:
-#			$weight.modulate.a = 0
-#			is_lifted = !is_lifted
-#			moves_label._increment_move_cnt()
-#			print(tempcost)
-#			tempcost += -1
-#			$clicks.text = str(tempcost)
-#		elif is_lifted:
-#			$weight.modulate.a = 0.5
-#			is_lifted = !is_lifted
-#			moves_label._decrement_move_cnt()
-#			tempcost += 1
-#			$clicks.text = str(tempcost)
-#		#moves_label.text = str("Moves: ", moves_cnt)
