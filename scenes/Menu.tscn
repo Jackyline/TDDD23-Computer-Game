@@ -107,6 +107,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Control/Start" to="Control/Start" method="_on_Start_pressed"]
-[connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/Exit" to="Control/Exit" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Control/Exit" to="Control/Start" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Control/LevelSelect" to="Control/LevelSelect" method="_on_LevelSelect_pressed"]

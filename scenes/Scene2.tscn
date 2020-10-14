@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
@@ -7,16 +7,18 @@
 [ext_resource path="res://textures/sound.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
-[ext_resource path="res://textures/left-start.png" type="Texture" id=8]
-[ext_resource path="res://textures/right-start.png" type="Texture" id=9]
+[ext_resource path="res://double-pixel-small.tres" type="DynamicFont" id=8]
+[ext_resource path="res://textures/left-start-filled.png" type="Texture" id=9]
 [ext_resource path="res://textures/background.png" type="Texture" id=10]
 [ext_resource path="res://textures/cross.png" type="Texture" id=11]
 [ext_resource path="res://textures/tile.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
-[ext_resource path="res://textures/down-start.png" type="Texture" id=16]
-[ext_resource path="res://textures/up-start.png" type="Texture" id=17]
+[ext_resource path="res://textures/up-start-filled.png" type="Texture" id=16]
+[ext_resource path="res://textures/down-start-filled.png" type="Texture" id=17]
+[ext_resource path="res://textures/right-start-filled.png" type="Texture" id=18]
+[ext_resource path="res://textures/hint.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -64,6 +66,53 @@ func _ready():
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 63.886, 63.9349 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "setup"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource( 15 )
@@ -139,32 +188,30 @@ __meta__ = {
 [node name="Board" type="Area2D" parent="."]
 position = Vector2( 583.408, 312.164 )
 script = ExtResource( 4 )
+hints = [ 3, 5 ]
 
 [node name="x0" type="Area2D" parent="Board"]
+position = Vector2( -197.627, -134.463 )
 script = ExtResource( 2 )
 cost = 1
 
 [node name="x0" type="Sprite" parent="Board/x0"]
-position = Vector2( -261.443, -198.051 )
-centered = false
 script = ExtResource( 3 )
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x0"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x0col" type="CollisionShape2D" parent="Board/x0"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x0"]
-margin_left = -239.0
-margin_top = -177.0
-margin_right = -150.0
-margin_bottom = -92.0
+margin_left = -44.0
+margin_top = -41.701
+margin_right = 45.0
+margin_bottom = 43.299
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -173,36 +220,31 @@ __meta__ = {
 }
 
 [node name="x1" type="Area2D" parent="Board"]
-position = Vector2( 128, 0 )
+position = Vector2( -69.627, -134.463 )
 script = ExtResource( 2 )
-pipes = [ 1 ]
-cost = 1
+cost = 2
 order = 1
 clickable = true
 
 [node name="x1" type="Sprite" parent="Board/x1"]
-position = Vector2( -261.333, -197.894 )
-texture = ExtResource( 17 )
-centered = false
+texture = ExtResource( 16 )
 script = ExtResource( 3 )
 pipes = [ 1 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x1"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x1col" type="CollisionShape2D" parent="Board/x1"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x1"]
-margin_left = -242.0
-margin_top = -177.0
-margin_right = -153.0
-margin_bottom = -92.0
+margin_left = -44.373
+margin_top = -41.701
+margin_right = 44.627
+margin_bottom = 43.299
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -211,33 +253,29 @@ __meta__ = {
 }
 
 [node name="x2" type="Area2D" parent="Board"]
-position = Vector2( 256, 0 )
+position = Vector2( 58.627, -134.463 )
 script = ExtResource( 2 )
 cost = 1
 order = 2
 
 [node name="x2" type="Sprite" parent="Board/x2"]
-position = Vector2( -261.333, -197.894 )
-centered = false
 script = ExtResource( 3 )
 pipes = [ 1 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x2"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x2col" type="CollisionShape2D" parent="Board/x2"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x2"]
-margin_left = -243.0
-margin_top = -177.0
-margin_right = -154.0
-margin_bottom = -92.0
+margin_left = -45.627
+margin_top = -41.701
+margin_right = 43.373
+margin_bottom = 43.299
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -246,7 +284,7 @@ __meta__ = {
 }
 
 [node name="x3" type="Area2D" parent="Board"]
-position = Vector2( 0, 128 )
+position = Vector2( -197.578, -6.16602 )
 script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 2
@@ -254,28 +292,24 @@ order = 3
 clickable = true
 
 [node name="x3" type="Sprite" parent="Board/x3"]
-position = Vector2( -261.443, -198.051 )
-texture = ExtResource( 8 )
-centered = false
+texture = ExtResource( 9 )
 script = ExtResource( 3 )
 pipes = [ 1 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x3"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x0col" type="CollisionShape2D" parent="Board/x3"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x3"]
-margin_left = -239.0
-margin_top = -175.0
-margin_right = -150.0
-margin_bottom = -90.0
+margin_left = -44.049
+margin_top = -41.998
+margin_right = 44.951
+margin_bottom = 43.002
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -284,36 +318,32 @@ __meta__ = {
 }
 
 [node name="x4" type="Area2D" parent="Board"]
-position = Vector2( 128, 128 )
+position = Vector2( -69.627, -6.166 )
 script = ExtResource( 2 )
-pipes = [ 1, 1 ]
+pipes = [ 1 ]
 cost = 3
 order = 4
 clickable = true
 
 [node name="x4" type="Sprite" parent="Board/x4"]
-position = Vector2( -261.333, -197.894 )
 texture = ExtResource( 11 )
-centered = false
 script = ExtResource( 3 )
 pipes = [ 1 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x4"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x1col" type="CollisionShape2D" parent="Board/x4"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x4"]
-margin_left = -242.0
-margin_top = -175.0
-margin_right = -153.0
-margin_bottom = -90.0
+margin_left = -44.373
+margin_top = -41.998
+margin_right = 44.627
+margin_bottom = 43.002
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -322,7 +352,7 @@ __meta__ = {
 }
 
 [node name="x5" type="Area2D" parent="Board"]
-position = Vector2( 256, 128 )
+position = Vector2( 58.627, -6.166 )
 script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 3
@@ -330,28 +360,24 @@ order = 5
 clickable = true
 
 [node name="x5" type="Sprite" parent="Board/x5"]
-position = Vector2( -261.333, -197.894 )
-texture = ExtResource( 9 )
-centered = false
+texture = ExtResource( 18 )
 script = ExtResource( 3 )
 pipes = [ 1 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x5"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x5col" type="CollisionShape2D" parent="Board/x5"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x5"]
-margin_left = -243.0
-margin_top = -175.0
-margin_right = -154.0
-margin_bottom = -90.0
+margin_left = -45.627
+margin_top = -41.998
+margin_right = 43.373
+margin_bottom = 43.002
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -360,33 +386,29 @@ __meta__ = {
 }
 
 [node name="x6" type="Area2D" parent="Board"]
-position = Vector2( 0, 256 )
+position = Vector2( -197.627, 122 )
 script = ExtResource( 2 )
 cost = 1
 order = 6
 
 [node name="x6" type="Sprite" parent="Board/x6"]
-position = Vector2( -261.443, -198.051 )
-centered = false
 script = ExtResource( 3 )
 pipes = [ 0 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x6"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x6col" type="CollisionShape2D" parent="Board/x6"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x6"]
-margin_left = -239.0
-margin_top = -172.156
-margin_right = -150.0
-margin_bottom = -87.1563
+margin_left = -44.0
+margin_top = -46.0
+margin_right = 45.0
+margin_bottom = 38.9997
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -395,7 +417,7 @@ __meta__ = {
 }
 
 [node name="x7" type="Area2D" parent="Board"]
-position = Vector2( 128, 256 )
+position = Vector2( -69.627, 122 )
 script = ExtResource( 2 )
 pipes = [ 1 ]
 cost = 1
@@ -403,28 +425,24 @@ order = 7
 clickable = true
 
 [node name="x6" type="Sprite" parent="Board/x7"]
-position = Vector2( -261.443, -198.051 )
-texture = ExtResource( 16 )
-centered = false
+texture = ExtResource( 17 )
 script = ExtResource( 3 )
-pipes = [ 0 ]
-cost = 1
+pipes = [ 1 ]
+cost = 2
 
 [node name="weight" type="Sprite" parent="Board/x7"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x6col" type="CollisionShape2D" parent="Board/x7"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x7"]
-margin_left = -242.0
-margin_top = -172.156
-margin_right = -153.0
-margin_bottom = -87.1563
+margin_left = -44.373
+margin_top = -42.164
+margin_right = 44.627
+margin_bottom = 42.8357
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -433,33 +451,29 @@ __meta__ = {
 }
 
 [node name="x8" type="Area2D" parent="Board"]
-position = Vector2( 256, 256 )
+position = Vector2( 58.627, 122 )
 script = ExtResource( 2 )
 cost = 1
 order = 8
 
 [node name="x8" type="Sprite" parent="Board/x8"]
-position = Vector2( -261.443, -198.051 )
-centered = false
 script = ExtResource( 3 )
 pipes = [ 0 ]
 cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x8"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( -197.578, -135.166 )
 texture = ExtResource( 12 )
 script = SubResource( 5 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x8"]
-position = Vector2( -197.373, -133.463 )
 shape = SubResource( 6 )
 
 [node name="clicks" type="Label" parent="Board/x8"]
-margin_left = -243.0
-margin_top = -172.156
-margin_right = -154.0
-margin_bottom = -87.1563
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
@@ -467,12 +481,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HintNode" type="Node2D" parent="Board"]
+visible = false
+
+[node name="Position2D" type="Position2D" parent="Board/HintNode"]
+position = Vector2( -30, 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Board/HintNode/Position2D"]
+anims/setup = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Board/HintNode/Position2D"]
+rotation = 1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 19 )
+
 [node name="Button" type="Button" parent="."]
 margin_left = 464.0
 margin_top = 520.0
 margin_right = 564.0
 margin_bottom = 555.0
 text = "SUBMIT"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Hints" type="Button" parent="."]
+margin_left = 839.408
+margin_top = 40.0
+margin_right = 939.408
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 8 )
+text = "HINT: 0"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -494,5 +535,24 @@ position = Vector2( 23.3828, 21.197 )
 scale = Vector2( 0.0253536, 0.0288003 )
 texture = ExtResource( 5 )
 [connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
+[connection signal="mouse_entered" from="Board/x0" to="Board/x0" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x0" to="Board/x0" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x1" to="Board/x1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x1" to="Board/x1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x2" to="Board/x2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x2" to="Board/x2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x3" to="Board/x3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x3" to="Board/x3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x4" to="Board/x4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x4" to="Board/x4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x5" to="Board/x5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x5" to="Board/x5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x6" to="Board/x6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x6" to="Board/x6" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x7" to="Board/x7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x7" to="Board/x7" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x8" to="Board/x8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x8" to="Board/x8" method="_on_mouse_exited"]
 [connection signal="pressed" from="Button" to="Board" method="_submit"]
+[connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]
 [connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
