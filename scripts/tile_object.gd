@@ -10,6 +10,7 @@ export var clickable : bool
 
 onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 onready var tempcost = cost
+onready var hint = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
 
 var moves_label : Label
 
@@ -25,6 +26,10 @@ func _ready():
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0:
+		if hint.visible == true:
+			hint.get_child(0).get_child(0).stop()
+			hint.visible = false
+		
 		if tempcost == 1:
 			$weight.modulate.a = 0
 			is_lifted = !is_lifted

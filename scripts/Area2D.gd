@@ -8,6 +8,7 @@ var player_solution = []
 var hints_number = 0
 var hint_button = null
 var moves_label : Label
+var animation_node : Node2D
 
 export var hints:Array
 onready var dialog = preload("res://scenes/level_finished.tscn").instance()
@@ -17,15 +18,18 @@ func _ready():
 	# get hint button reference
 	self.hint_button = get_node("/root/Level "+ str(level_nr)+ "/Hints")
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
+	animation_node = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
 	
 	for tile in self.get_children():
-		tiles.append(tile)
+		if tile is Area2D:
+			tiles.append(tile)
 	
 	simplex_inst = simplex.new(_get_costs(), _get_constraints())
 	print("constraints: ", _get_constraints())
 	print("Solution: ", simplex_inst.get_solution())
 	
 	self.hints_number = hints.size()
+	print(hints_number)
 	print("hints", hints.size())
 	self.hint_button.text = "HINTS: " + str(self.hints_number)
 
@@ -128,8 +132,14 @@ func _get_hint_tile():
 
 
 func _on_Hints_pressed():
+	print(hints)
 	if !hints.empty():
-		_get_hint_tile()
+		var tile = _get_hint_tile()
+		print(tile.position)
+		animation_node.visible = true
+		animation_node.set_position(tile.position)
+		print(animation_node.get_global_position())
+		animation_node.get_child(0).get_child(0).play("setup")
 		moves_label._increment_move_cnt()
 		self.hint_button.text = "HINTS: " + str(self.hints_number)
 	

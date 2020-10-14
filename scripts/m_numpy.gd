@@ -61,22 +61,4 @@ static func m_abs(var n):
 		return -n
 	else:
 		return n
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
