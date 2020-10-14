@@ -25,7 +25,14 @@ func _ready():
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
+	if Input.is_action_just_released("mouse_released") and tempcost > 0:
+		$weight.modulate = Color(0,0,1,0.5)
+		
+	if event is InputEventMouseButton && event.is_action_released("click"):
+		print("dkjsfhjkdsflködslkjfgdsz")
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0:
+		$weight.modulate = Color(0,0,1,0.8)
 		if hint.visible == true:
 			hint.get_child(0).get_child(0).stop()
 			hint.visible = false
@@ -38,9 +45,17 @@ func _input_event(viewport, event, shape_idx):
 		tempcost += -1
 		$clicks.text = str(tempcost)
 	elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT and clickable and tempcost < cost:
-		$weight.modulate.a = 0.5
+		$weight.modulate = Color(0,0,1,0.8)
 		if tempcost == 0:
 			is_lifted = !is_lifted 
 		moves_label._decrement_move_cnt()
 		tempcost += 1
 		$clicks.text = str(tempcost)
+
+func _on_mouse_entered():
+	if clickable and tempcost > 0:
+		$weight.modulate = Color(0,0,1,0.5)
+	
+func _on_mouse_exited():
+	if clickable and tempcost > 0:
+		$weight.modulate = Color(1,1,1,0.5)
