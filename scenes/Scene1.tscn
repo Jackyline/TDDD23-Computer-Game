@@ -87,7 +87,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 248, -0.25, 0, 0.25, 0, 296, -0.25, 0, 0.25, 0, 248, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
 tracks/2/type = "bezier"
@@ -97,7 +97,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 216, -0.25, 0, 0.25, 0, 216, -0.25, 0, 0.25, 0, 216, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
 tracks/3/type = "bezier"
@@ -534,13 +534,17 @@ position = Vector2( 23.3828, 21.197 )
 scale = Vector2( 0.0253536, 0.0288003 )
 texture = ExtResource( 5 )
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 40, 40 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
+[node name="Position2D" type="Position2D" parent="Node2D"]
+position = Vector2( -30, 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Position2D"]
 anims/setup = SubResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 267.475, 216 )
+[node name="Sprite" type="Sprite" parent="Node2D/Position2D"]
+position = Vector2( -1.84223, 0 )
 rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 16 )
