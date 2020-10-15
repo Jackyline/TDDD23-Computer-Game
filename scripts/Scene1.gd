@@ -15,3 +15,4 @@ func _process(delta):
 		else:
 			add_child(menu)
 			get_node("TimerPanel/Timer").timer.paused = true
+

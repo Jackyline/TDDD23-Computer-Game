@@ -7,6 +7,7 @@ export var pipes : Array
 export var cost : int
 export var order : int
 export var clickable : bool
+export var my_color : Color
 
 onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 onready var tempcost = cost
@@ -22,6 +23,10 @@ func _ready():
 	else:
 		$clicks.text = str(0)
 	
+	# Set color
+	if $texture != null:
+		$texture.modulate = my_color
+		
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
