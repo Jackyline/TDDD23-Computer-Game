@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/left-start-filled.png" type="Texture" id=8]
 [ext_resource path="res://textures/horizontal-filled.png" type="Texture" id=9]
+[ext_resource path="res://textures/fajrbackground.png" type="Texture" id=10]
 [ext_resource path="res://textures/right-start-filled.png" type="Texture" id=11]
 [ext_resource path="res://textures/background_tile.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Timer.gd" type="Script" id=13]
@@ -115,7 +116,13 @@ tracks/3/keys = {
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 15 )
 
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 896, 583.836 )
+scale = Vector2( 1.75, 1.5 )
+texture = ExtResource( 10 )
+
 [node name="Background2" type="Node2D" parent="."]
+visible = false
 position = Vector2( 1042.37, 434 )
 
 [node name="Sprite" type="Sprite" parent="Background2"]
@@ -248,6 +255,73 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Border" type="Node2D" parent="."]
+position = Vector2( 960, 498 )
+
+[node name="Sprite" type="Sprite" parent="Border"]
+position = Vector2( -256, -256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite4" type="Sprite" parent="Border"]
+position = Vector2( -256, -128 )
+texture = ExtResource( 18 )
+
+[node name="Sprite6" type="Sprite" parent="Border"]
+position = Vector2( -128, -256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite7" type="Sprite" parent="Border"]
+position = Vector2( 0, -256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite8" type="Sprite" parent="Border"]
+position = Vector2( 128, -256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite9" type="Sprite" parent="Border"]
+position = Vector2( 256, -128 )
+texture = ExtResource( 18 )
+
+[node name="Sprite17" type="Sprite" parent="Border"]
+position = Vector2( 256, -256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite10" type="Sprite" parent="Border"]
+position = Vector2( 256, 0 )
+texture = ExtResource( 18 )
+
+[node name="Sprite11" type="Sprite" parent="Border"]
+position = Vector2( 256, 128 )
+texture = ExtResource( 18 )
+
+[node name="Sprite12" type="Sprite" parent="Border"]
+position = Vector2( 256, 256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite13" type="Sprite" parent="Border"]
+position = Vector2( 128, 256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite14" type="Sprite" parent="Border"]
+position = Vector2( 0, 256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite15" type="Sprite" parent="Border"]
+position = Vector2( -128, 256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite16" type="Sprite" parent="Border"]
+position = Vector2( -256, 256 )
+texture = ExtResource( 18 )
+
+[node name="Sprite2" type="Sprite" parent="Border"]
+position = Vector2( -256, 0 )
+texture = ExtResource( 18 )
+
+[node name="Sprite3" type="Sprite" parent="Border"]
+position = Vector2( -256, 128.166 )
+texture = ExtResource( 18 )
+
 [node name="Board" type="Area2D" parent="."]
 position = Vector2( 960, 498 )
 script = ExtResource( 4 )
@@ -351,7 +425,7 @@ pipes = [ 1 ]
 cost = 2
 order = 3
 clickable = true
-my_color = Color( 0.301961, 0.686275, 0.235294, 1 )
+my_color = Color( 0.545098, 1, 0.466667, 1 )
 
 [node name="texture" type="Sprite" parent="Board/x3"]
 texture = ExtResource( 8 )
@@ -386,7 +460,7 @@ pipes = [ 1 ]
 cost = 3
 order = 4
 clickable = true
-my_color = Color( 0.301961, 0.686275, 0.235294, 1 )
+my_color = Color( 0.545098, 1, 0.466667, 1 )
 
 [node name="texture" type="Sprite" parent="Board/x4"]
 texture = ExtResource( 9 )
@@ -421,7 +495,7 @@ pipes = [ 1 ]
 cost = 3
 order = 5
 clickable = true
-my_color = Color( 0.301961, 0.686275, 0.235294, 1 )
+my_color = Color( 0.545098, 1, 0.466667, 1 )
 
 [node name="texture" type="Sprite" parent="Board/x5"]
 texture = ExtResource( 11 )
@@ -595,73 +669,6 @@ __meta__ = {
 position = Vector2( 23.3828, 21.197 )
 scale = Vector2( 0.0253536, 0.0288003 )
 texture = ExtResource( 5 )
-
-[node name="Border" type="Node2D" parent="."]
-position = Vector2( 960, 498 )
-
-[node name="Sprite" type="Sprite" parent="Border"]
-position = Vector2( -256, -256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite4" type="Sprite" parent="Border"]
-position = Vector2( -256, -128 )
-texture = ExtResource( 18 )
-
-[node name="Sprite6" type="Sprite" parent="Border"]
-position = Vector2( -128, -256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite7" type="Sprite" parent="Border"]
-position = Vector2( 0, -256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite8" type="Sprite" parent="Border"]
-position = Vector2( 128, -256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite9" type="Sprite" parent="Border"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 18 )
-
-[node name="Sprite17" type="Sprite" parent="Border"]
-position = Vector2( 256, -256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite10" type="Sprite" parent="Border"]
-position = Vector2( 256, 0 )
-texture = ExtResource( 18 )
-
-[node name="Sprite11" type="Sprite" parent="Border"]
-position = Vector2( 256, 128 )
-texture = ExtResource( 18 )
-
-[node name="Sprite12" type="Sprite" parent="Border"]
-position = Vector2( 256, 256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite13" type="Sprite" parent="Border"]
-position = Vector2( 128, 256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite14" type="Sprite" parent="Border"]
-position = Vector2( 0, 256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite15" type="Sprite" parent="Border"]
-position = Vector2( -128, 256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite16" type="Sprite" parent="Border"]
-position = Vector2( -256, 256 )
-texture = ExtResource( 18 )
-
-[node name="Sprite2" type="Sprite" parent="Border"]
-position = Vector2( -256, 0 )
-texture = ExtResource( 18 )
-
-[node name="Sprite3" type="Sprite" parent="Border"]
-position = Vector2( -256, 128.166 )
-texture = ExtResource( 18 )
 [connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
 [connection signal="mouse_entered" from="Board/x0" to="Board/x0" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Board/x0" to="Board/x0" method="_on_mouse_exited"]
