@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://scripts/Button.gd" type="Script" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Area2D.gd" type="Script" id=4]
@@ -9,15 +8,17 @@
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/left-start-filled.png" type="Texture" id=8]
 [ext_resource path="res://textures/horizontal-filled.png" type="Texture" id=9]
-[ext_resource path="res://textures/fajrbackground.png" type="Texture" id=10]
+[ext_resource path="res://textures/orange-button.png" type="Texture" id=10]
 [ext_resource path="res://textures/right-start-filled.png" type="Texture" id=11]
 [ext_resource path="res://textures/background_tile.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
 [ext_resource path="res://textures/hint.png" type="Texture" id=16]
-[ext_resource path="res://double-pixel-small.tres" type="DynamicFont" id=17]
 [ext_resource path="res://textures/stone.png" type="Texture" id=18]
+[ext_resource path="res://double-pixel-button.tres" type="DynamicFont" id=19]
+[ext_resource path="res://scripts/button_effect.gd" type="Script" id=20]
+[ext_resource path="res://textures/red-button.png" type="Texture" id=21]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -114,12 +115,8 @@ tracks/3/keys = {
 }
 
 [node name="Level 1" type="Node2D"]
+position = Vector2( 1.5874, 0.793701 )
 script = ExtResource( 15 )
-
-[node name="Background" type="Sprite" parent="."]
-position = Vector2( 896, 583.836 )
-scale = Vector2( 1.75, 1.5 )
-texture = ExtResource( 10 )
 
 [node name="Background2" type="Node2D" parent="."]
 visible = false
@@ -630,31 +627,6 @@ rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 16 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 910.522
-margin_top = 890.831
-margin_right = 1010.52
-margin_bottom = 925.831
-text = "SUBMIT"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Hints" type="Button" parent="."]
-margin_left = 1734.27
-margin_top = 36.3387
-margin_right = 1834.27
-margin_bottom = 71.3387
-custom_fonts/font = ExtResource( 17 )
-text = "HINT: 0"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
 [node name="Sound" type="Button" parent="."]
 margin_left = 1859.82
 margin_top = 30.8684
@@ -669,6 +641,48 @@ __meta__ = {
 position = Vector2( 23.3828, 21.197 )
 scale = Vector2( 0.0253536, 0.0288003 )
 texture = ExtResource( 5 )
+
+[node name="Submit" type="TextureButton" parent="."]
+margin_left = 800.0
+margin_top = 870.0
+margin_right = 1012.0
+margin_bottom = 948.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 10 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Submit"]
+margin_left = 59.9999
+margin_top = 19.5146
+margin_right = 152.0
+margin_bottom = 58.5146
+custom_fonts/font = ExtResource( 19 )
+text = "SUBMIT"
+
+[node name="Hints" type="TextureButton" parent="."]
+margin_left = 1625.22
+margin_top = 20.8684
+margin_right = 1837.22
+margin_bottom = 98.8684
+texture_normal = ExtResource( 21 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Hints"]
+margin_left = 48.9592
+margin_top = 20.5789
+margin_right = 123.959
+margin_bottom = 59.5789
+custom_fonts/font = ExtResource( 19 )
+text = "HINTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
 [connection signal="mouse_entered" from="Board/x0" to="Board/x0" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Board/x0" to="Board/x0" method="_on_mouse_exited"]
@@ -688,6 +702,10 @@ texture = ExtResource( 5 )
 [connection signal="mouse_exited" from="Board/x7" to="Board/x7" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Board/x8" to="Board/x8" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Board/x8" to="Board/x8" method="_on_mouse_exited"]
-[connection signal="pressed" from="Button" to="Board" method="_submit"]
-[connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]
 [connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
+[connection signal="mouse_entered" from="Submit" to="Submit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Submit" to="Submit" method="_on_mouse_exited"]
+[connection signal="pressed" from="Submit" to="Board" method="_submit"]
+[connection signal="mouse_entered" from="Hints" to="Hints" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hints" to="Hints" method="_on_mouse_exited"]
+[connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]

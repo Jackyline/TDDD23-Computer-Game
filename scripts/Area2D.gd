@@ -16,7 +16,7 @@ onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_
 
 func _ready():
 	# get hint button reference
-	self.hint_button = get_node("/root/Level "+ str(level_nr)+ "/Hints")
+	self.hint_button = get_node("/root/Level "+ str(level_nr)+ "/Hints/Text")
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 	animation_node = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
 	
