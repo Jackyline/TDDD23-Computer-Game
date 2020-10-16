@@ -23,6 +23,7 @@ config/icon="res://textures/icon.png"
 
 MusicController="*res://scripts/MusicController.gd"
 global="*res://scripts/global.gd"
+Background="*res://scenes/Background.tscn"
 
 [display]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://double-pixel.tres" type="DynamicFont" id=1]
+[ext_resource path="res://double-pixel-title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/red-button.png" type="Texture" id=2]
 [ext_resource path="res://textures/green-button.png" type="Texture" id=3]
 [ext_resource path="res://textures/brokensign.png" type="Texture" id=4]
 [ext_resource path="res://textures/blue-button.png" type="Texture" id=5]
 [ext_resource path="res://double-pixel-button.tres" type="DynamicFont" id=6]
 [ext_resource path="res://textures/nightbackgroundwithmoon.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Background.gd" type="Script" id=8]
+[ext_resource path="res://scripts/button_effect.gd" type="Script" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -57,6 +59,7 @@ func _on_Levels_pressed():
 
 func _on_Start_pressed():
 	get_tree().change_scene(\"res://scenes/Scene1.tscn\")
+
 "
 
 [node name="MainMenu" type="Node2D"]
@@ -71,18 +74,17 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Control"]
-position = Vector2( 496.25, 111.402 )
+position = Vector2( 971.73, 270.974 )
 rotation = -0.120838
-scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="Control"]
 anchor_left = -0.025
 anchor_right = -0.025
-margin_left = 369.55
-margin_top = 72.0
-margin_right = 669.55
-margin_bottom = 192.0
+margin_left = 829.03
+margin_top = 141.784
+margin_right = 1131.03
+margin_bottom = 444.784
 rect_rotation = -6.92349
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -100,12 +102,14 @@ anchor_left = 0.5
 anchor_top = 0.4
 anchor_right = 0.5
 anchor_bottom = 0.4
-margin_left = -78.976
-margin_top = -30.4
-margin_right = 154.024
-margin_bottom = 56.6
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 328.21
+margin_top = 242.6
+margin_right = 561.21
+margin_bottom = 329.6
+rect_rotation = 6.97394
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 3 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,12 +130,17 @@ __meta__ = {
 }
 
 [node name="Levels" type="TextureButton" parent="Control"]
-margin_left = 432.025
-margin_top = 298.0
-margin_right = 673.025
-margin_bottom = 390.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 827.21
+margin_top = 664.0
+margin_right = 1068.21
+margin_bottom = 756.0
+rect_rotation = -3.64154
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 2 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Control/Levels"]
 margin_left = 28.2355
@@ -144,30 +153,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
-margin_left = 432.025
-margin_top = 384.0
-margin_right = 679.025
-margin_bottom = 483.0
-rect_rotation = 0.0209289
-rect_scale = Vector2( 0.7, 0.7 )
+[node name="Exit" type="TextureButton" parent="Control"]
+margin_left = 835.21
+margin_top = 822.0
+margin_right = 1082.21
+margin_bottom = 921.0
+rect_rotation = 0.17063
+rect_scale = Vector2( 1.5, 1.5 )
 texture_normal = ExtResource( 5 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Control/TextureButton"]
+[node name="Label" type="Label" parent="Control/Exit"]
 margin_left = 80.0078
 margin_top = 21.3994
 margin_right = 131.008
 margin_bottom = 60.3994
 custom_fonts/font = ExtResource( 6 )
 text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 
 [node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 513.407, 385.469 )
+scale = Vector2( 1.875, 1.875 )
 texture = ExtResource( 7 )
+centered = false
+script = ExtResource( 8 )
+
+[node name="Background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1920, 0 )
+scale = Vector2( 1.875, 1.875 )
+texture = ExtResource( 7 )
+centered = false
+script = ExtResource( 8 )
+[connection signal="mouse_entered" from="Control/Start" to="Control/Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Start" to="Control/Start" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="Control/Levels" to="Control/Levels" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Levels" to="Control/Levels" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/Levels" to="." method="_on_Levels_pressed"]
-[connection signal="pressed" from="Control/TextureButton" to="." method="_on_Exit_pressed"]
+[connection signal="mouse_entered" from="Control/Exit" to="Control/Exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Exit" to="Control/Exit" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/Exit" to="." method="_on_Exit_pressed"]
