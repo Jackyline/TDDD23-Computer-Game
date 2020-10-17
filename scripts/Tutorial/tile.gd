@@ -11,7 +11,7 @@ export var my_color : Color
 
 onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 onready var tempcost = cost
-onready var hint = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
+onready var hint = get_node("/root/Tutorial/HintNode")
 
 var moves_label : Label
 
@@ -27,7 +27,7 @@ func _ready():
 	if $texture != null:
 		$texture.modulate = my_color
 		
-	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
+	moves_label = get_node("/root/Tutorial/MovesPanel/MovesText")
 
 func _input_event(viewport, event, shape_idx):
 	if Input.is_action_just_released("mouse_released") and tempcost > 0 and clickable:

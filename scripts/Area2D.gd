@@ -16,7 +16,7 @@ onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_
 
 func _ready():
 	# get hint button reference
-	self.hint_button = get_node("/root/Level "+ str(level_nr)+ "/Hints/Text")
+	self.hint_button = get_node("/root/Level " + str(level_nr) + "/Hints/Text")
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 	animation_node = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
 	
@@ -132,13 +132,9 @@ func _get_hint_tile():
 
 
 func _on_Hints_pressed():
-	print(hints)
 	if !hints.empty():
 		var tile = _get_hint_tile()
-		print(tile.position)
 		animation_node.visible = true
-		animation_node.set_position(tile.position)
-		print(animation_node.get_global_position())
 		animation_node.get_child(0).get_child(0).play("setup")
 		moves_label._increment_move_cnt()
 		self.hint_button.text = "HINTS: " + str(self.hints_number)
