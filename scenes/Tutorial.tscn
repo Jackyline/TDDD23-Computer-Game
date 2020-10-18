@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://textures/purple-button.png" type="Texture" id=1]
 [ext_resource path="res://textures/left-start-filled.png" type="Texture" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=13]
 [ext_resource path="res://scripts/tutorial/tile.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=15]
-[ext_resource path="res://scripts/button_effect.gd" type="Script" id=16]
 [ext_resource path="res://textures/hint.png" type="Texture" id=17]
 [ext_resource path="res://textures/stone.png" type="Texture" id=18]
 [ext_resource path="res://textures/plumberman.png" type="Texture" id=19]
@@ -23,6 +22,8 @@
 [ext_resource path="res://scripts/tutorial/TextScript.gd" type="Script" id=21]
 [ext_resource path="res://textures/cover.png" type="Texture" id=22]
 [ext_resource path="res://scripts/Tutorial/TutManager.gd" type="Script" id=23]
+[ext_resource path="res://scenes/DummySubmit.gd" type="Script" id=24]
+[ext_resource path="res://scenes/DummyHints.gd" type="Script" id=25]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -88,7 +89,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 66.9221, 67.3261 )
+extents = Vector2( 129.896, 43.9942 )
 
 [sub_resource type="Animation" id=9]
 length = 2.0
@@ -393,8 +394,9 @@ margin_top = 870.794
 margin_right = 1013.59
 margin_bottom = 948.794
 rect_scale = Vector2( 1.5, 1.5 )
+disabled = true
 texture_normal = ExtResource( 10 )
-script = ExtResource( 16 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -415,8 +417,10 @@ margin_left = 1466.81
 margin_top = 21.6621
 margin_right = 1678.81
 margin_bottom = 99.6621
+mouse_filter = 1
+disabled = true
 texture_normal = ExtResource( 3 )
-script = ExtResource( 16 )
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -426,8 +430,9 @@ margin_left = 48.9592
 margin_top = 20.5789
 margin_right = 123.959
 margin_bottom = 59.5789
+mouse_filter = 1
 custom_fonts/font = ExtResource( 7 )
-text = "HINTS"
+text = "HINTS: 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -508,7 +513,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="ClickRect" type="Area2D" parent="."]
-position = Vector2( 896, 436 )
+position = Vector2( 960.749, 930.032 )
 script = ExtResource( 5 )
 
 [node name="CollShape" type="CollisionShape2D" parent="ClickRect"]
@@ -538,12 +543,12 @@ texture = ExtResource( 17 )
 [connection signal="mouse_exited" from="Board/x2" to="Board/x2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Board/x3" to="Board/x3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Board/x3" to="Board/x3" method="_on_mouse_exited"]
+[connection signal="button_up" from="Submit" to="Submit" method="_on_Submit_button_up"]
 [connection signal="mouse_entered" from="Submit" to="Submit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Submit" to="Submit" method="_on_mouse_exited"]
-[connection signal="pressed" from="Submit" to="Board" method="_submit"]
+[connection signal="button_up" from="Hints" to="Hints" method="_on_Hints_button_up"]
 [connection signal="mouse_entered" from="Hints" to="Hints" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hints" to="Hints" method="_on_mouse_exited"]
-[connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]
 [connection signal="mouse_entered" from="Sound" to="Sound" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Sound" to="Sound" method="_on_mouse_exited"]
 [connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]

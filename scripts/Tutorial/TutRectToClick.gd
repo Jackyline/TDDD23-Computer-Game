@@ -2,13 +2,8 @@ extends Area2D
 
 var is_click_allowed : bool = false
 
-func _ready():	
-	pass
-
-func _input_event(viewport, event, shape_idx):
-	pass
-
 func _on_mouse_entered():
+	print("rect enetered")
 	self.is_click_allowed = true
 
 func _on_mouse_exited():
