@@ -4,9 +4,12 @@ onready var test = get_node("/root/Tutorial/Board/x0")
 
 onready var hint = get_node("/root/Tutorial/HintNode")
 onready var click_rect : Area2D = get_node("/root/Tutorial/ClickRect")
-onready var dialog_cloud : RichTextLabel = get_node("/root/Tutorial/DialogCloud/VBoxContainer/RichTextLabel")
+onready var dialog_cloud : Sprite = get_node("/root/Tutorial/DialogCloud")
+onready var dialog_label : RichTextLabel = get_node("/root/Tutorial/DialogCloud/VBoxContainer/RichTextLabel")
 onready var click_collider : CollisionShape2D = get_node("/root/Tutorial/ClickRect/CollShape")
 onready var cover_screen : Sprite = get_node("/root/Tutorial/Cover")
+onready var plumber : Node2D = get_node("/root/Tutorial/Plumber")
+onready var board : Area2D = get_node("/root/Tutorial/Board")
 
 var dialog_1 : String = "Hello adventurer! I'm LePapcain, the plumber. We have some pipes to be uncovered."
 var dialog_2 : String = "I need to get to those damn pipes but unfortunately every time we lift a tile laying over the pipe the poisonous gas is being released."
@@ -28,21 +31,15 @@ var tile_size = Vector2(64,64)
 func _ready():
 	print(click_rect.position)
 	print(click_collider.shape.extents)
-	
 	print("pos", test.get_global_position())
 	
+	# Move plumber with cloud to the front
+	_change_focus([self.plumber, self.dialog_cloud])
+	
 	_change_click_rect(cloud_pos, cloud_size)
-	dialog_cloud.run_next_dialog(dialog_1)
+	dialog_label.run_next_dialog(dialog_1)
 	step += 1
-
-func _input(event):
-	if event.is_action_pressed("left_click"):
-		click_rect.set_left(true)
-		click_rect.set_right(false)
-	if event.is_action_pressed("right_click"):
-		click_rect.set_left(false)
-		click_rect.set_right(true)
-
+	
 
 func _process(delta):
 	if Input.is_action_just_released("mouse_released"):
@@ -50,37 +47,39 @@ func _process(delta):
 			match step:
 				2:
 					_change_click_rect(cloud_pos, cloud_size)
-					dialog_cloud.run_next_dialog(dialog_2)
+					dialog_label.run_next_dialog(dialog_2)
 					step += 1
 				3:
-					dialog_cloud.run_next_dialog(dialog_3)
+					dialog_label.run_next_dialog(dialog_3)
 					step += 1
 				4:
-					dialog_cloud.run_next_dialog(dialog_4)
+					dialog_label.run_next_dialog(dialog_4)
 					step += 1
 				5: 
-					cover_screen.visible = false
+					#cover_screen.visible = false
 					_change_click_rect(tile_pos, tile_size)
 					_display_hint(tile_pos)
-					dialog_cloud.run_next_dialog(dialog_5)
+					dialog_label.run_next_dialog(dialog_5)
+					_change_focus([self.plumber, self.dialog_cloud, self.board])
 					step += 1	
 				6:
-					if click_rect.is_left():
+					if Input.is_action_just_released("left_click"):
 						_change_click_rect(cloud_pos, cloud_size)
 						cover_screen.visible = true
-						dialog_cloud.run_next_dialog(dialog_6)
+						dialog_label.run_next_dialog(dialog_6)
+						_change_focus([self.plumber, self.dialog_cloud])
 						step += 1
 				7: 
-					cover_screen.visible = false
 					_change_click_rect(tile_pos, tile_size)
 					_display_hint(tile_pos)
-					dialog_cloud.run_next_dialog(dialog_7)
+					dialog_label.run_next_dialog(dialog_7)
+					_change_focus([self.plumber, self.dialog_cloud, self.board])
 					step += 1
 				8:
-					if click_rect.is_right():
+					if Input.is_action_just_released("right_click"):
 						cover_screen.visible = true
 						_change_click_rect(cloud_pos, cloud_size)
-						dialog_cloud.run_next_dialog(dialog_8)
+						dialog_label.run_next_dialog(dialog_8)
 						step += 1
 					
 func _change_click_rect(var pos, var size):
@@ -91,3 +90,9 @@ func _display_hint(var pos):
 	hint.visible = true
 	hint.get_child(0).get_child(0).play("setup")
 	hint.position = pos
+
+func _change_focus(var nodes):
+	move_child(cover_screen, get_child_count()-2)
+	for node in nodes:
+		print("muerte", node.name)
+		move_child(node, get_child_count()-2)
