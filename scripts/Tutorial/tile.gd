@@ -12,6 +12,7 @@ export var my_color : Color
 onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 onready var tempcost = cost
 onready var hint = get_node("/root/Tutorial/HintNode")
+onready var click_rect = get_node("/root/Tutorial/ClickRect")
 
 var moves_label : Label
 
@@ -33,7 +34,7 @@ func _input_event(viewport, event, shape_idx):
 	if Input.is_action_just_released("mouse_released") and tempcost > 0 and clickable:
 		$weight.modulate = Color(0,1,0,0.5)
 	
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0:
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and clickable and tempcost > 0 and click_rect.is_click_allowed():
 		$weight.modulate = Color(0,1,0,0.8)
 		if hint.visible == true:
 			hint.get_child(0).get_child(0).stop()
@@ -46,7 +47,7 @@ func _input_event(viewport, event, shape_idx):
 		print(tempcost)
 		tempcost += -1
 		$clicks.text = str(tempcost)
-	elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT and clickable and tempcost < cost:
+	elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT and clickable and tempcost < cost and click_rect.is_click_allowed():
 		$weight.modulate = Color(0,1,0,0.8)
 		if tempcost == 0:
 			is_lifted = !is_lifted 

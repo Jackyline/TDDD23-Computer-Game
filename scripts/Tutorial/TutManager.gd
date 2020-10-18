@@ -35,6 +35,15 @@ func _ready():
 	dialog_cloud.run_next_dialog(dialog_1)
 	step += 1
 
+func _input(event):
+	if event.is_action_pressed("left_click"):
+		click_rect.set_left(true)
+		click_rect.set_right(false)
+	if event.is_action_pressed("right_click"):
+		click_rect.set_left(false)
+		click_rect.set_right(true)
+
+
 func _process(delta):
 	if Input.is_action_just_released("mouse_released"):
 		if click_rect.is_click_allowed():
@@ -54,12 +63,13 @@ func _process(delta):
 					_change_click_rect(tile_pos, tile_size)
 					_display_hint(tile_pos)
 					dialog_cloud.run_next_dialog(dialog_5)
-					step += 1
+					step += 1	
 				6:
-					_change_click_rect(cloud_pos, cloud_size)
-					cover_screen.visible = true
-					dialog_cloud.run_next_dialog(dialog_6)
-					step += 1
+					if click_rect.is_left():
+						_change_click_rect(cloud_pos, cloud_size)
+						cover_screen.visible = true
+						dialog_cloud.run_next_dialog(dialog_6)
+						step += 1
 				7: 
 					cover_screen.visible = false
 					_change_click_rect(tile_pos, tile_size)
@@ -67,10 +77,11 @@ func _process(delta):
 					dialog_cloud.run_next_dialog(dialog_7)
 					step += 1
 				8:
-					cover_screen.visible = true
-					_change_click_rect(cloud_pos, cloud_size)
-					dialog_cloud.run_next_dialog(dialog_8)
-					step += 1
+					if click_rect.is_right():
+						cover_screen.visible = true
+						_change_click_rect(cloud_pos, cloud_size)
+						dialog_cloud.run_next_dialog(dialog_8)
+						step += 1
 					
 func _change_click_rect(var pos, var size):
 	click_rect.position = pos

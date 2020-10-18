@@ -12,10 +12,10 @@ __meta__ = {
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 visible = true
-margin_left = 368.0
-margin_top = 176.0
-margin_right = 688.0
-margin_bottom = 296.0
+margin_left = 800.0
+margin_top = 261.0
+margin_right = 1120.0
+margin_bottom = 381.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
+[ext_resource path="res://textures/purple-button.png" type="Texture" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Area2D.gd" type="Script" id=4]
-[ext_resource path="res://textures/sound.png" type="Texture" id=5]
+[ext_resource path="res://textures/New Piskel.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=6]
 [ext_resource path="res://double-pixel.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/left-start-filled.png" type="Texture" id=8]
@@ -191,11 +192,16 @@ texture = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="ScoreBoard" type="Sprite" parent="."]
+position = Vector2( 221, 254.6 )
+scale = Vector2( 3, 2 )
+texture = ExtResource( 5 )
+
 [node name="TimerPanel" type="Panel" parent="."]
-margin_left = 80.0
-margin_top = 129.6
-margin_right = 120.0
-margin_bottom = 169.6
+margin_left = 186.0
+margin_top = 254.6
+margin_right = 226.0
+margin_bottom = 294.6
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -211,10 +217,10 @@ __meta__ = {
 }
 
 [node name="MovesPanel" type="Panel" parent="."]
-margin_left = 80.0
-margin_top = 88.0
-margin_right = 120.0
-margin_bottom = 128.0
+margin_left = 171.0
+margin_top = 213.0
+margin_right = 211.0
+margin_bottom = 253.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -627,21 +633,6 @@ rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 16 )
 
-[node name="Sound" type="Button" parent="."]
-margin_left = 1859.82
-margin_top = 30.8684
-margin_right = 1907.82
-margin_bottom = 75.8684
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="Sound"]
-position = Vector2( 23.3828, 21.197 )
-scale = Vector2( 0.0253536, 0.0288003 )
-texture = ExtResource( 5 )
-
 [node name="Submit" type="TextureButton" parent="."]
 margin_left = 800.0
 margin_top = 870.0
@@ -661,12 +652,15 @@ margin_right = 152.0
 margin_bottom = 58.5146
 custom_fonts/font = ExtResource( 19 )
 text = "SUBMIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Hints" type="TextureButton" parent="."]
-margin_left = 1625.22
-margin_top = 20.8684
-margin_right = 1837.22
-margin_bottom = 98.8684
+margin_left = 1430.41
+margin_top = 15.2063
+margin_right = 1642.41
+margin_bottom = 93.2063
 texture_normal = ExtResource( 21 )
 script = ExtResource( 20 )
 __meta__ = {
@@ -680,6 +674,31 @@ margin_right = 123.959
 margin_bottom = 59.5789
 custom_fonts/font = ExtResource( 19 )
 text = "HINTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound" type="TextureButton" parent="."]
+margin_left = 1686.41
+margin_top = 15.2063
+margin_right = 1898.41
+margin_bottom = 95.2063
+texture_normal = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnOff" type="RichTextLabel" parent="Sound"]
+margin_left = 40.0
+margin_top = 21.0
+margin_right = 168.0
+margin_bottom = 61.0
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 19 )
+bbcode_enabled = true
+bbcode_text = "[center] Music [/center]"
+text = " Music "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -702,10 +721,12 @@ __meta__ = {
 [connection signal="mouse_exited" from="Board/x7" to="Board/x7" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Board/x8" to="Board/x8" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Board/x8" to="Board/x8" method="_on_mouse_exited"]
-[connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
 [connection signal="mouse_entered" from="Submit" to="Submit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Submit" to="Submit" method="_on_mouse_exited"]
 [connection signal="pressed" from="Submit" to="Board" method="_submit"]
 [connection signal="mouse_entered" from="Hints" to="Hints" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hints" to="Hints" method="_on_mouse_exited"]
 [connection signal="pressed" from="Hints" to="Board" method="_on_Hints_pressed"]
+[connection signal="mouse_entered" from="Sound" to="Sound" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Sound" to="Sound" method="_on_mouse_exited"]
+[connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
