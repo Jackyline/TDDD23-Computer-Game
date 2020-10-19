@@ -10,9 +10,10 @@ var hint_button = null
 var moves_label : Label
 var animation_node : Node2D
 
+export var level_nr = 0
 export var hints:Array
-onready var dialog = preload("res://scenes/level_finished.tscn").instance()
-onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
+onready var dialog = preload("res://scenes/LevelFinished.tscn").instance()
+#onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
 
 func _ready():
 	# get hint button reference
@@ -25,7 +26,10 @@ func _ready():
 			tiles.append(tile)
 	
 	simplex_inst = simplex.new(_get_costs(), _get_constraints())
-	print("constraints: ", _get_constraints())
+	#print("constraints: ", _get_constraints())
+	for c in _get_constraints():
+		print("CVCC")
+		print(c)
 	print("Solution: ", simplex_inst.get_solution())
 	
 	self.hints_number = hints.size()
@@ -58,7 +62,6 @@ func _submit():
 		dialog.get_node("PopupDialog")._on_start(str(_get_player_moves()), 
 			str(timespend), _calculate_reward(simplex_inst.get_opt_cost(), 
 			_get_player_moves()), int(level_nr))
-		print("Stars: ", _calculate_reward(simplex_inst.get_opt_cost(), _get_player_moves()))
 		get_node("/root/Level "+ str(level_nr) + "/TimerPanel/Timer").timer.paused = true
 		
 		_disable_tiles()
@@ -76,7 +79,7 @@ func _get_costs():
 func _get_constraints():
 	var temp = {}
 	var res = []
-	
+	print(tiles)
 	for tile in tiles:
 		if !tile.pipes.empty():
 			for pipe in tile.pipes:

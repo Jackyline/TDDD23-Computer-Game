@@ -1,15 +1,13 @@
 extends Area2D
 
 export var is_lifted : int
-export var row: int
-export var column : int  
 export var pipes : Array
 export var cost : int
 export var order : int
 export var clickable : bool
-export var my_color : Color
+export var my_color : Color = Color("#33ff36")
 
-onready var level_nr = get_tree().get_current_scene().get_name()[get_tree().get_current_scene().get_name().length() - 1]
+onready var level_nr = get_parent().level_nr
 onready var tempcost = cost
 onready var hint = get_node("/root/Level " + str(level_nr) + "/Board/HintNode")
 

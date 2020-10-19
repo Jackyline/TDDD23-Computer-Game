@@ -22,8 +22,8 @@
 [ext_resource path="res://scripts/tutorial/TextScript.gd" type="Script" id=21]
 [ext_resource path="res://textures/cover.png" type="Texture" id=22]
 [ext_resource path="res://scripts/Tutorial/TutManager.gd" type="Script" id=23]
-[ext_resource path="res://scenes/DummySubmit.gd" type="Script" id=24]
-[ext_resource path="res://scenes/DummyHints.gd" type="Script" id=25]
+[ext_resource path="res://scripts/DummySubmit.gd" type="Script" id=24]
+[ext_resource path="res://scripts/DummyHints.gd" type="Script" id=25]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -268,7 +268,6 @@ my_color = Color( 0.2, 1, 0.211765, 1 )
 [node name="texture" type="Sprite" parent="Board/x0"]
 texture = ExtResource( 2 )
 script = ExtResource( 15 )
-cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x0"]
 modulate = Color( 1, 1, 1, 0.52549 )
@@ -301,8 +300,6 @@ my_color = Color( 0.2, 1, 0.211765, 1 )
 [node name="texture" type="Sprite" parent="Board/x1"]
 texture = ExtResource( 4 )
 script = ExtResource( 15 )
-pipes = [ 1 ]
-cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x1"]
 modulate = Color( 1, 1, 1, 0.52549 )
@@ -331,8 +328,6 @@ order = 2
 
 [node name="texture" type="Sprite" parent="Board/x2"]
 script = ExtResource( 15 )
-pipes = [ 1 ]
-cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x2"]
 modulate = Color( 1, 1, 1, 0.52549 )
@@ -365,8 +360,6 @@ my_color = Color( 0.2, 1, 0.211765, 1 )
 [node name="texture" type="Sprite" parent="Board/x3"]
 texture = ExtResource( 8 )
 script = ExtResource( 15 )
-pipes = [ 1 ]
-cost = 1
 
 [node name="weight" type="Sprite" parent="Board/x3"]
 modulate = Color( 1, 1, 1, 0.52549 )
@@ -472,7 +465,6 @@ position = Vector2( 198.704, 690.96 )
 position = Vector2( -77.1171, -0.166016 )
 texture = ExtResource( 19 )
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plumber/Sprite2"]
 autoplay = "idle_plumber"

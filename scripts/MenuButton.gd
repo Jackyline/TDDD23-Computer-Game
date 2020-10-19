@@ -24,8 +24,8 @@ func _on_Menu_pressed():
 
 
 func _on_TextureButton_pressed():
-	get_tree().change_scene("res://scenes/Scene1.tscn")
+	get_tree().change_scene("res://scenes/Level1.tscn")
 
 
 func _on_2_pressed():
-	get_tree().change_scene("res://scenes/Scene2.tscn")
+	get_tree().change_scene("res://scenes/Level2.tscn")

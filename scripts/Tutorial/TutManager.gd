@@ -23,9 +23,9 @@ var dialog_7 : String = "If you accidentally lifted wrong tile, DON'T worry. Use
 var dialog_8 : String = "Good job!"
 var dialog_9 : String = "If you ever feel that you need my help, you can use avaliable hints."
 var dialog_10 : String = "Use a hint now."
-var dialog_11 : String = "A sugested tile is shown on one of the tile. Lift that tile again."
+var dialog_11 : String = "A suggested tile is shown on one of the tile. Lift that tile again."
 var dialog_12 : String = "Once you feel that the job is done, just submit it."
-var dialog_13 : String = "Sweet. You are ready for real chellanges. See you!"
+var dialog_13 : String = "Sweet. You are ready for real challenges. See you!"
 
 var step : int = 1
 var step_in_progress = true
@@ -127,8 +127,10 @@ func _process(delta):
 						_change_click_rect(cloud_pos, cloud_size)
 						step += 1
 				14:
-					pass
-					#swicth scene here
+					if Input.is_action_just_released("left_click"):
+						global.data["tutorialwatched"] = true
+						global.save(global.data)
+						get_tree().change_scene("res://scenes/Level1.tscn")
 						
 func _change_click_rect(var pos, var size):
 	click_rect.position = pos
