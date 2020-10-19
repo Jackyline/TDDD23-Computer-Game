@@ -7,7 +7,7 @@ var run_dialog = false
 var timer : Timer
 
 func _ready():
-	timer = get_node("/root/Tutorial/DialogCloud/Timer")
+	timer = get_node("/root/" + get_tree().get_current_scene().get_name() + "/DialogCloud/Timer")
 	
 	#self.append_bbcode("[center]" + dialog_1 + "[/center]")
 	#self.current_dialog = dialog_1

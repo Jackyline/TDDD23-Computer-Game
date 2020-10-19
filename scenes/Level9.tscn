@@ -282,7 +282,7 @@ position = Vector2( 960, 500.206 )
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 4 )
 level_nr = 9
-hints = [ 2 ]
+hints = [ 2, 1, 9, 14 ]
 
 [node name="x1" type="Area2D" parent="Board"]
 position = Vector2( -192, -192 )

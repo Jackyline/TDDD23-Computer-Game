@@ -1,0 +1,1080 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://scripts/Sound.gd" type="Script" id=1]
+[ext_resource path="res://scripts/tutorial/TextScript.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://scripts/MovesText.gd" type="Script" id=4]
+[ext_resource path="res://double-pixel-dialog.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scripts/tutorial/TutRectToClick.gd" type="Script" id=6]
+[ext_resource path="res://scripts/DummySubmit.gd" type="Script" id=7]
+[ext_resource path="res://scripts/DummyHints.gd" type="Script" id=8]
+[ext_resource path="res://scripts/tile_object.gd" type="Script" id=9]
+[ext_resource path="res://scripts/Timer.gd" type="Script" id=10]
+[ext_resource path="res://scripts/Tutorial/EndTutorial.gd" type="Script" id=11]
+[ext_resource path="res://textures/down-left.png" type="Texture" id=12]
+[ext_resource path="res://textures/red-button.png" type="Texture" id=13]
+[ext_resource path="res://textures/cover.png" type="Texture" id=14]
+[ext_resource path="res://textures/left-start-filled.png" type="Texture" id=15]
+[ext_resource path="res://textures/purple-button.png" type="Texture" id=16]
+[ext_resource path="res://textures/dialog-cloud.png" type="Texture" id=17]
+[ext_resource path="res://textures/plumberman.png" type="Texture" id=18]
+[ext_resource path="res://textures/orange-button.png" type="Texture" id=19]
+[ext_resource path="res://textures/hint.png" type="Texture" id=20]
+[ext_resource path="res://textures/stone.png" type="Texture" id=21]
+[ext_resource path="res://textures/up-left.png" type="Texture" id=22]
+[ext_resource path="res://textures/cross.png" type="Texture" id=23]
+[ext_resource path="res://textures/right-start-filled.png" type="Texture" id=24]
+[ext_resource path="res://textures/left-up.png" type="Texture" id=25]
+[ext_resource path="res://textures/up-right.png" type="Texture" id=26]
+[ext_resource path="res://scripts/Area2D.gd" type="Script" id=27]
+[ext_resource path="res://double-pixel.tres" type="DynamicFont" id=28]
+[ext_resource path="res://textures/down-right.png" type="Texture" id=29]
+[ext_resource path="res://textures/up-left-right.png" type="Texture" id=30]
+[ext_resource path="res://double-pixel-button.tres" type="DynamicFont" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Panel
+
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$TestText.text = str(get_tree().get_current_scene().get_name())
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	
+
+"
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_plumber"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 129.896, 43.9942 )
+
+[sub_resource type="Animation" id=7]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Sprite
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 63.886, 63.9349 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "setup"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+
+[node name="Level 11" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TimerPanel" type="Panel" parent="."]
+margin_left = 81.5874
+margin_top = 130.394
+margin_right = 121.587
+margin_bottom = 170.394
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Label" parent="TimerPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 28 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MovesPanel" type="Panel" parent="."]
+margin_left = 81.5874
+margin_top = 88.7937
+margin_right = 121.587
+margin_bottom = 128.794
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MovesText" type="Label" parent="MovesPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 28 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelPanel" type="Panel" parent="."]
+margin_left = 861.587
+margin_top = 75.7937
+margin_right = 1061.59
+margin_bottom = 175.794
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestText" type="Label" parent="LevelPanel"]
+margin_right = 200.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 28 )
+text = "Farewell"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submit" type="TextureButton" parent="."]
+margin_left = 801.587
+margin_top = 870.794
+margin_right = 1013.59
+margin_bottom = 948.794
+rect_scale = Vector2( 1.5, 1.5 )
+disabled = true
+texture_normal = ExtResource( 19 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Submit"]
+margin_left = 59.9999
+margin_top = 19.5146
+margin_right = 152.0
+margin_bottom = 58.5146
+custom_fonts/font = ExtResource( 31 )
+text = "SUBMIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hints" type="TextureButton" parent="."]
+margin_left = 1466.81
+margin_top = 21.6621
+margin_right = 1678.81
+margin_bottom = 99.6621
+mouse_filter = 1
+disabled = true
+texture_normal = ExtResource( 13 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Hints"]
+margin_left = 48.9592
+margin_top = 20.5789
+margin_right = 123.959
+margin_bottom = 59.5789
+mouse_filter = 1
+custom_fonts/font = ExtResource( 31 )
+text = "HINTS: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound" type="TextureButton" parent="."]
+margin_left = 1696.0
+margin_top = 21.6621
+margin_right = 1908.0
+margin_bottom = 101.662
+texture_normal = ExtResource( 16 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnOff" type="RichTextLabel" parent="Sound"]
+margin_left = 32.0
+margin_top = 18.0
+margin_right = 176.0
+margin_bottom = 58.0
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 31 )
+bbcode_enabled = true
+bbcode_text = "[center]Music[/center]"
+text = "Music"
+
+[node name="Cover" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.694118 )
+position = Vector2( 940.663, 550.603 )
+scale = Vector2( 63.2104, 35.4127 )
+texture = ExtResource( 14 )
+
+[node name="Plumber" type="Node2D" parent="."]
+position = Vector2( 198.704, 690.96 )
+
+[node name="Sprite2" type="Sprite" parent="Plumber"]
+position = Vector2( -77.1171, -0.166016 )
+texture = ExtResource( 18 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Plumber/Sprite2"]
+autoplay = "idle_plumber"
+anims/idle_plumber = SubResource( 5 )
+
+[node name="DialogCloud" type="Sprite" parent="."]
+position = Vector2( 329.804, 414.093 )
+texture = ExtResource( 17 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogCloud"]
+margin_left = -226.0
+margin_top = -95.299
+margin_right = 224.0
+margin_bottom = 84.701
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogCloud/VBoxContainer"]
+margin_top = 70.0
+margin_right = 450.0
+margin_bottom = 109.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/default_color = Color( 0.85098, 0.517647, 0.211765, 1 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="DialogCloud"]
+wait_time = 0.05
+autostart = true
+
+[node name="ClickRect" type="Area2D" parent="."]
+position = Vector2( 960.749, 930.032 )
+script = ExtResource( 6 )
+
+[node name="CollShape" type="CollisionShape2D" parent="ClickRect"]
+position = Vector2( 0, -3.05176e-05 )
+shape = SubResource( 6 )
+
+[node name="HintNode" type="Node2D" parent="."]
+visible = false
+position = Vector2( 960, 500 )
+
+[node name="Position2D" type="Position2D" parent="HintNode"]
+position = Vector2( -30, 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HintNode/Position2D"]
+anims/setup = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="HintNode/Position2D"]
+rotation = 1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 20 )
+
+[node name="Board" type="Area2D" parent="."]
+position = Vector2( 960, 500.117 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 27 )
+level_nr = 11
+hints = [ 2 ]
+
+[node name="x1" type="Area2D" parent="Board"]
+position = Vector2( -192, -192 )
+script = ExtResource( 9 )
+pipes = [ 1, 3 ]
+cost = 1
+my_color = Color( 0.207843, 0.223529, 0.207843, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x1"]
+texture = ExtResource( 23 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x1"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x1col" type="CollisionShape2D" parent="Board/x1"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x1"]
+margin_left = -44.373
+margin_top = -41.998
+margin_right = 44.627
+margin_bottom = 43.002
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="x2" type="Area2D" parent="Board"]
+position = Vector2( -64, -192 )
+script = ExtResource( 9 )
+pipes = [ 1 ]
+cost = 2
+order = 1
+
+[node name="texture" type="Sprite" parent="Board/x2"]
+texture = ExtResource( 24 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x2"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x5col" type="CollisionShape2D" parent="Board/x2"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x2"]
+margin_left = -45.627
+margin_top = -41.998
+margin_right = 43.373
+margin_bottom = 43.002
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x3" type="Area2D" parent="Board"]
+position = Vector2( 64, -192 )
+script = ExtResource( 9 )
+pipes = [ 2 ]
+cost = 3
+order = 2
+my_color = Color( 1, 0.592157, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x3"]
+texture = ExtResource( 15 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x3"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x6col" type="CollisionShape2D" parent="Board/x3"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x3"]
+margin_left = -44.373
+margin_top = -42.164
+margin_right = 44.627
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x4" type="Area2D" parent="Board"]
+position = Vector2( 192, -192 )
+script = ExtResource( 9 )
+pipes = [ 2 ]
+cost = 4
+order = 3
+my_color = Color( 1, 0.592157, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x4"]
+texture = ExtResource( 12 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x4"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x6col" type="CollisionShape2D" parent="Board/x4"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x4"]
+margin_left = -44.373
+margin_top = -42.164
+margin_right = 44.627
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x5" type="Area2D" parent="Board"]
+position = Vector2( -192, -64 )
+script = ExtResource( 9 )
+pipes = [ 3 ]
+cost = 4
+order = 4
+my_color = Color( 0.882353, 1, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x5"]
+texture = ExtResource( 26 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x5"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x5"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x5"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x6" type="Area2D" parent="Board"]
+position = Vector2( -64, -64 )
+script = ExtResource( 9 )
+pipes = [ 3 ]
+cost = 3
+order = 5
+my_color = Color( 0.882353, 1, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x6"]
+texture = ExtResource( 12 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x6"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x6"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x6"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x7" type="Area2D" parent="Board"]
+position = Vector2( 64, -64 )
+script = ExtResource( 9 )
+pipes = [ 2 ]
+cost = 2
+order = 6
+my_color = Color( 1, 0.592157, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x7"]
+texture = ExtResource( 29 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x7"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x7"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x7"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x8" type="Area2D" parent="Board"]
+position = Vector2( 192, -64 )
+script = ExtResource( 9 )
+pipes = [ 2 ]
+cost = 1
+order = 7
+my_color = Color( 1, 0.592157, 0.2, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x8"]
+texture = ExtResource( 25 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x8"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x8"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x8"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x9" type="Area2D" parent="Board"]
+position = Vector2( -192, 64 )
+script = ExtResource( 9 )
+pipes = [ 4 ]
+cost = 4
+order = 8
+my_color = Color( 0.207843, 0.2, 1, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x9"]
+texture = ExtResource( 15 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x9"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x9"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x9"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x10" type="Area2D" parent="Board"]
+position = Vector2( -64, 64 )
+script = ExtResource( 9 )
+pipes = [ 3, 4 ]
+cost = 1
+order = 9
+my_color = Color( 0.129412, 0.113725, 0.137255, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x10"]
+texture = ExtResource( 23 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x10"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x10"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x10"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x11" type="Area2D" parent="Board"]
+position = Vector2( 64, 64 )
+script = ExtResource( 9 )
+pipes = [ 4, 2 ]
+cost = 3
+order = 10
+my_color = Color( 0.32549, 0.254902, 0.317647, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x11"]
+texture = ExtResource( 23 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x11"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x11"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x11"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x12" type="Area2D" parent="Board"]
+position = Vector2( 192, 64 )
+script = ExtResource( 9 )
+pipes = [ 4 ]
+cost = 2
+order = 11
+my_color = Color( 0.207843, 0.2, 1, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x12"]
+texture = ExtResource( 12 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x12"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x12"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x12"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x13" type="Area2D" parent="Board"]
+position = Vector2( -192, 192 )
+script = ExtResource( 9 )
+pipes = [ 4 ]
+cost = 3
+order = 12
+my_color = Color( 0.207843, 0.2, 1, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x13"]
+texture = ExtResource( 15 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x13"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x13"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x13"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x14" type="Area2D" parent="Board"]
+position = Vector2( -64, 192 )
+script = ExtResource( 9 )
+pipes = [ 3, 4 ]
+cost = 1
+order = 13
+my_color = Color( 0.129412, 0.113725, 0.137255, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x14"]
+texture = ExtResource( 30 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x14"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x14"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x14"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x15" type="Area2D" parent="Board"]
+position = Vector2( 64, 192 )
+script = ExtResource( 9 )
+pipes = [ 2, 4 ]
+cost = 2
+order = 14
+my_color = Color( 0.32549, 0.254902, 0.317647, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x15"]
+texture = ExtResource( 30 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x15"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x15"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x15"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x16" type="Area2D" parent="Board"]
+position = Vector2( 192, 192 )
+script = ExtResource( 9 )
+pipes = [ 4 ]
+cost = 4
+order = 15
+my_color = Color( 0.207843, 0.2, 1, 1 )
+
+[node name="texture" type="Sprite" parent="Board/x16"]
+texture = ExtResource( 22 )
+script = ExtResource( 3 )
+
+[node name="weight" type="Sprite" parent="Board/x16"]
+visible = false
+modulate = Color( 1, 1, 1, 0.52549 )
+texture = ExtResource( 21 )
+script = SubResource( 8 )
+
+[node name="x8col" type="CollisionShape2D" parent="Board/x16"]
+shape = SubResource( 9 )
+
+[node name="clicks" type="Label" parent="Board/x16"]
+margin_left = -45.627
+margin_top = -42.164
+margin_right = 43.373
+margin_bottom = 42.8357
+custom_fonts/font = ExtResource( 28 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintNode" type="Node2D" parent="Board"]
+visible = false
+
+[node name="Position2D" type="Position2D" parent="Board/HintNode"]
+position = Vector2( -30, 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Board/HintNode/Position2D"]
+anims/setup = SubResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Board/HintNode/Position2D"]
+rotation = 1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 20 )
+
+[node name="Border" type="Node2D" parent="."]
+position = Vector2( 960, 500 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Border" type="Sprite" parent="Border"]
+position = Vector2( -320, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border2" type="Sprite" parent="Border"]
+position = Vector2( -64, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border3" type="Sprite" parent="Border"]
+position = Vector2( 64, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border4" type="Sprite" parent="Border"]
+position = Vector2( 192, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border5" type="Sprite" parent="Border"]
+position = Vector2( 320, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border6" type="Sprite" parent="Border"]
+position = Vector2( -320, -64 )
+texture = ExtResource( 21 )
+
+[node name="Border15" type="Sprite" parent="Border"]
+position = Vector2( -320, -192 )
+texture = ExtResource( 21 )
+
+[node name="Border7" type="Sprite" parent="Border"]
+position = Vector2( 320, -64 )
+texture = ExtResource( 21 )
+
+[node name="Border16" type="Sprite" parent="Border"]
+position = Vector2( 320, -192 )
+texture = ExtResource( 21 )
+
+[node name="Border8" type="Sprite" parent="Border"]
+position = Vector2( 320, 64 )
+texture = ExtResource( 21 )
+
+[node name="Border9" type="Sprite" parent="Border"]
+position = Vector2( 192, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border10" type="Sprite" parent="Border"]
+position = Vector2( 320, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border11" type="Sprite" parent="Border"]
+position = Vector2( 64, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border12" type="Sprite" parent="Border"]
+position = Vector2( -64, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border17" type="Sprite" parent="Border"]
+position = Vector2( -192, -320 )
+texture = ExtResource( 21 )
+
+[node name="Border18" type="Sprite" parent="Border"]
+position = Vector2( -192, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border13" type="Sprite" parent="Border"]
+position = Vector2( -320, 320 )
+texture = ExtResource( 21 )
+
+[node name="Border14" type="Sprite" parent="Border"]
+position = Vector2( -320, 64 )
+texture = ExtResource( 21 )
+
+[node name="Border19" type="Sprite" parent="Border"]
+position = Vector2( 320, 192 )
+texture = ExtResource( 21 )
+
+[node name="Border20" type="Sprite" parent="Border"]
+position = Vector2( -320, 192 )
+texture = ExtResource( 21 )
+[connection signal="timeout" from="Timer" to="TimerPanel/Timer" method="_on_Timer_timeout"]
+[connection signal="button_up" from="Submit" to="Submit" method="_on_Submit_button_up"]
+[connection signal="mouse_entered" from="Submit" to="Submit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Submit" to="Submit" method="_on_mouse_exited"]
+[connection signal="button_up" from="Hints" to="Hints" method="_on_Hints_button_up"]
+[connection signal="mouse_entered" from="Hints" to="Hints" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hints" to="Hints" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Sound" to="Sound" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Sound" to="Sound" method="_on_mouse_exited"]
+[connection signal="pressed" from="Sound" to="Sound" method="_on_Sound_pressed"]
+[connection signal="timeout" from="DialogCloud/Timer" to="DialogCloud/VBoxContainer/RichTextLabel" method="_on_Timer_timeout"]
+[connection signal="mouse_entered" from="ClickRect" to="ClickRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickRect" to="ClickRect" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x1" to="Board/x1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x1" to="Board/x1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x2" to="Board/x2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x2" to="Board/x2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x3" to="Board/x3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x3" to="Board/x3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x4" to="Board/x4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x4" to="Board/x4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x5" to="Board/x5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x5" to="Board/x5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x6" to="Board/x6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x6" to="Board/x6" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x7" to="Board/x7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x7" to="Board/x7" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x8" to="Board/x8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x8" to="Board/x8" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x9" to="Board/x9" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x9" to="Board/x9" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x10" to="Board/x10" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x10" to="Board/x10" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x11" to="Board/x11" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x11" to="Board/x11" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x12" to="Board/x12" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x12" to="Board/x12" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x13" to="Board/x13" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x13" to="Board/x13" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x14" to="Board/x14" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x14" to="Board/x14" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x15" to="Board/x15" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x15" to="Board/x15" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Board/x16" to="Board/x16" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Board/x16" to="Board/x16" method="_on_mouse_exited"]

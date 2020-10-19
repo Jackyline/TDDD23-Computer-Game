@@ -132,6 +132,7 @@ func _process(delta):
 						global.save(global.data)
 						get_tree().change_scene("res://scenes/Level1.tscn")
 						
+						
 func _change_click_rect(var pos, var size):
 	click_rect.position = pos
 	click_collider.shape.extents = size

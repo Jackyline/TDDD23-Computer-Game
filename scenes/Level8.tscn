@@ -271,7 +271,7 @@ texture = ExtResource( 18 )
 position = Vector2( 960, 500.206 )
 script = ExtResource( 4 )
 level_nr = 8
-hints = [ 2 ]
+hints = [ 2, 11, 1 ]
 
 [node name="x1" type="Area2D" parent="Board"]
 position = Vector2( -192, -128 )

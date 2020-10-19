@@ -26,10 +26,7 @@ func _ready():
 			tiles.append(tile)
 	
 	simplex_inst = simplex.new(_get_costs(), _get_constraints())
-	#print("constraints: ", _get_constraints())
-	for c in _get_constraints():
-		print("CVCC")
-		print(c)
+	print("constraints: ", _get_constraints())
 	print("Solution: ", simplex_inst.get_solution())
 	
 	self.hints_number = hints.size()
@@ -137,6 +134,7 @@ func _get_hint_tile():
 func _on_Hints_pressed():
 	if !hints.empty():
 		var tile = _get_hint_tile()
+		animation_node.position = tile.position
 		animation_node.visible = true
 		animation_node.get_child(0).get_child(0).play("setup")
 		moves_label._increment_move_cnt()
