@@ -518,7 +518,6 @@ __meta__ = {
 [node name="x9" type="Area2D" parent="Board"]
 position = Vector2( 128, 128 )
 script = ExtResource( 2 )
-pipes = [ 1 ]
 order = 8
 my_color = Color( 0.2, 1, 0.211765, 1 )
 
