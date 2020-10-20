@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://textures/purple-button.png" type="Texture" id=1]
 [ext_resource path="res://scripts/tile_object.gd" type="Script" id=2]
@@ -11,17 +11,18 @@
 [ext_resource path="res://textures/left-start-filled.png" type="Texture" id=9]
 [ext_resource path="res://textures/orange-button.png" type="Texture" id=10]
 [ext_resource path="res://textures/up-start-filled.png" type="Texture" id=11]
-[ext_resource path="res://textures/cross.png" type="Texture" id=12]
+[ext_resource path="res://textures/left-up.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Timer.gd" type="Script" id=13]
 [ext_resource path="res://scripts/MovesText.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Scene1.gd" type="Script" id=15]
 [ext_resource path="res://textures/hint.png" type="Texture" id=16]
-[ext_resource path="res://textures/up-left-right.png" type="Texture" id=17]
+[ext_resource path="res://textures/horizontal-filled.png" type="Texture" id=17]
 [ext_resource path="res://textures/stone.png" type="Texture" id=18]
 [ext_resource path="res://double-pixel-button.tres" type="DynamicFont" id=19]
 [ext_resource path="res://scripts/button_effect.gd" type="Script" id=20]
 [ext_resource path="res://textures/red-button.png" type="Texture" id=21]
 [ext_resource path="res://textures/down-start-filled.png" type="Texture" id=22]
+[ext_resource path="res://textures/down-right.png" type="Texture" id=23]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -435,11 +436,14 @@ pipes = [ 1, 2 ]
 cost = 3
 order = 5
 clickable = true
-my_color = Color( 0.32549, 0.313726, 0.309804, 1 )
+my_color = Color( 1, 0.329412, 0.2, 1 )
 
 [node name="texture" type="Sprite" parent="Board/x6"]
 texture = ExtResource( 17 )
 script = ExtResource( 3 )
+
+[node name="second" type="Sprite" parent="Board/x6"]
+texture = ExtResource( 22 )
 
 [node name="weight" type="Sprite" parent="Board/x6"]
 modulate = Color( 1, 1, 1, 0.52549 )
@@ -468,11 +472,15 @@ pipes = [ 2, 3 ]
 cost = 2
 order = 6
 clickable = true
-my_color = Color( 0.32549, 0.313726, 0.309804, 1 )
+my_color = Color( 1, 0.329412, 0.2, 1 )
+my_second_color = Color( 0.713726, 0.2, 1, 1 )
 
 [node name="texture" type="Sprite" parent="Board/x7"]
 texture = ExtResource( 12 )
 script = ExtResource( 3 )
+
+[node name="second" type="Sprite" parent="Board/x7"]
+texture = ExtResource( 23 )
 
 [node name="weight" type="Sprite" parent="Board/x7"]
 modulate = Color( 1, 1, 1, 0.52549 )

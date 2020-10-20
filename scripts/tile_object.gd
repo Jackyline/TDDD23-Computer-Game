@@ -6,6 +6,7 @@ export var cost : int
 export var order : int
 export var clickable : bool
 export var my_color : Color = Color("#33ff36")
+export var my_second_color : Color = Color("#33ff36")
 
 onready var level_nr = get_parent().level_nr
 onready var tempcost = cost
@@ -24,6 +25,8 @@ func _ready():
 	# Set color
 	if $texture != null:
 		$texture.modulate = my_color
+	if $second != null:
+		$second.modulate = my_second_color
 		
 	moves_label = get_node("/root/Level " + str(level_nr) + "/MovesPanel/MovesText")
 
