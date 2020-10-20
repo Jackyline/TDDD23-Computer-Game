@@ -329,7 +329,6 @@ texture = ExtResource( 9 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x2"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="weight" type="Sprite" parent="Board/x2"]
@@ -728,7 +727,6 @@ texture = ExtResource( 17 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x14"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="weight" type="Sprite" parent="Board/x14"]

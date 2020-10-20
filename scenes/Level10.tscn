@@ -298,7 +298,6 @@ texture = ExtResource( 9 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x1"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 17 )
 
 [node name="weight" type="Sprite" parent="Board/x1"]
@@ -599,7 +598,6 @@ texture = ExtResource( 28 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x10"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 27 )
 
 [node name="weight" type="Sprite" parent="Board/x10"]
@@ -637,7 +635,6 @@ texture = ExtResource( 28 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x11"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 27 )
 
 [node name="weight" type="Sprite" parent="Board/x11"]
@@ -741,7 +738,6 @@ texture = ExtResource( 28 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x14"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="weight" type="Sprite" parent="Board/x14"]
@@ -779,7 +775,6 @@ texture = ExtResource( 28 )
 script = ExtResource( 3 )
 
 [node name="second" type="Sprite" parent="Board/x15"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="weight" type="Sprite" parent="Board/x15"]
