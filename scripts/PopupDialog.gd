@@ -33,7 +33,8 @@ func _set_stars(stars):
 			get_node("Star" + str(i)).scale = scale
 
 func _on_Next_pressed():
-	global.data["levels"][str(nextlevel)] = []
+	if !global.data["levels"].has(str(nextlevel)):
+		global.data["levels"][str(nextlevel)] = []
 	#global.save(global.data)
 	if global.data["levels"].has(str(current)):
 		if (global.data["levels"][str(current)].size() != 0):
