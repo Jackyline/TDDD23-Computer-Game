@@ -3,7 +3,7 @@ extends Node2D
 var starTexture = preload("res://textures/Star Filled.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for level in range(1, 3):
+	for level in range(1, 11):
 		if !global.data.levels.has(str(level)):
 			print(global.data.levels)
 			print(level)

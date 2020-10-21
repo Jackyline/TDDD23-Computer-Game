@@ -34,13 +34,13 @@
 [ext_resource path="res://textures/down-start-filled.png" type="Texture" id=32]
 [ext_resource path="res://textures/up-start-filled.png" type="Texture" id=33]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Panel
 
 
@@ -61,7 +61,7 @@ func _ready():
 
 "
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 resource_name = "idle_plumber"
 loop = true
 tracks/0/type = "value"
@@ -77,10 +77,10 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 129.896, 43.9942 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -126,7 +126,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1, 2 )
 }
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=8]
 script/source = "extends Sprite
 
 # Declare member variables here. Examples:
@@ -143,11 +143,10 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 63.886, 63.9349 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "setup"
+[sub_resource type="Animation" id=10]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -203,7 +202,7 @@ margin_left = 81.5874
 margin_top = 130.394
 margin_right = 121.587
 margin_bottom = 170.394
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -222,7 +221,7 @@ margin_left = 81.5874
 margin_top = 88.7937
 margin_right = 121.587
 margin_bottom = 128.794
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -241,8 +240,8 @@ margin_left = 861.587
 margin_top = 75.7937
 margin_right = 1061.59
 margin_bottom = 175.794
-custom_styles/panel = SubResource( 10 )
-script = SubResource( 11 )
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -346,7 +345,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plumber/Sprite2"]
 autoplay = "idle_plumber"
-anims/idle_plumber = SubResource( 12 )
+anims/idle_plumber = SubResource( 5 )
 
 [node name="DialogCloud" type="Sprite" parent="."]
 position = Vector2( 329.804, 414.093 )
@@ -388,7 +387,7 @@ script = ExtResource( 6 )
 
 [node name="CollShape" type="CollisionShape2D" parent="ClickRect"]
 position = Vector2( 0, -3.05176e-05 )
-shape = SubResource( 13 )
+shape = SubResource( 6 )
 
 [node name="HintNode" type="Node2D" parent="."]
 visible = false
@@ -398,7 +397,7 @@ position = Vector2( 960, 500 )
 position = Vector2( -30, 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HintNode/Position2D"]
-anims/setup = SubResource( 14 )
+anims/setup = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="HintNode/Position2D"]
 rotation = 1.5708
@@ -430,10 +429,10 @@ texture = ExtResource( 33 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x1col" type="CollisionShape2D" parent="Board/x1"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x1"]
 margin_left = -44.373
@@ -462,10 +461,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x5col" type="CollisionShape2D" parent="Board/x2"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x2"]
 margin_left = -45.627
@@ -495,10 +494,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x6col" type="CollisionShape2D" parent="Board/x3"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x3"]
 margin_left = -44.373
@@ -528,10 +527,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x6col" type="CollisionShape2D" parent="Board/x4"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x4"]
 margin_left = -44.373
@@ -561,10 +560,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x5"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x5"]
 margin_left = -45.627
@@ -594,10 +593,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x6"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x6"]
 margin_left = -45.627
@@ -627,10 +626,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x7"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x7"]
 margin_left = -45.627
@@ -660,10 +659,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x8"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x8"]
 margin_left = -45.627
@@ -693,10 +692,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x9"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x9"]
 margin_left = -45.627
@@ -730,10 +729,10 @@ texture = ExtResource( 23 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x10"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x10"]
 margin_left = -45.627
@@ -767,10 +766,10 @@ texture = ExtResource( 23 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x11"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x11"]
 margin_left = -45.627
@@ -800,10 +799,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x12"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x12"]
 margin_left = -45.627
@@ -833,10 +832,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x13"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x13"]
 margin_left = -45.627
@@ -870,10 +869,10 @@ texture = ExtResource( 32 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x14"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x14"]
 margin_left = -45.627
@@ -909,10 +908,10 @@ texture = ExtResource( 32 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x15"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x15"]
 margin_left = -45.627
@@ -942,10 +941,10 @@ script = ExtResource( 3 )
 visible = false
 modulate = Color( 1, 1, 1, 0.52549 )
 texture = ExtResource( 21 )
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="x8col" type="CollisionShape2D" parent="Board/x16"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="clicks" type="Label" parent="Board/x16"]
 margin_left = -45.627
@@ -966,7 +965,7 @@ visible = false
 position = Vector2( -30, 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Board/HintNode/Position2D"]
-anims/setup = SubResource( 7 )
+anims/setup = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="Board/HintNode/Position2D"]
 rotation = 1.5708
