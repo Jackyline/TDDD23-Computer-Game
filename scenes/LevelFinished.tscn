@@ -22,9 +22,9 @@ __meta__ = {
 }
 
 [node name="Next" type="Button" parent="PopupDialog"]
-margin_left = 44.0
+margin_left = 204.0
 margin_top = 88.0
-margin_right = 96.0
+margin_right = 256.0
 margin_bottom = 108.0
 text = "Next"
 __meta__ = {
@@ -32,9 +32,9 @@ __meta__ = {
 }
 
 [node name="Retry" type="Button" parent="PopupDialog"]
-margin_left = 204.0
+margin_left = 44.0
 margin_top = 88.0
-margin_right = 256.0
+margin_right = 96.0
 margin_bottom = 108.0
 text = "Retry"
 __meta__ = {
